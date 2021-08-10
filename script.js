@@ -1,3 +1,11 @@
+const verifyTie = () =>{
+    let tie = true
+    game.map((line)=>{
+        if (line[0] === 0 ) tie = false
+    } )
+    return tie
+}
+
 
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
