@@ -15,7 +15,6 @@ const updatingGame = (event) =>{
     let lastIndex = game[rowOfGame].lastIndexOf(0)
     if(lastIndex !== -1){
         game[rowOfGame][lastIndex] = 1 
-        console.log(game)
     }
 }
 const  creatingBoard  = () =>{
@@ -34,11 +33,11 @@ const  creatingBoard  = () =>{
         let columnNumber = game.indexOf(row) + 1
         column.dataset.column = columnNumber
         let rowNumber = 0;
-        row.forEach(()=>{
+        row.forEach( () =>{
             rowNumber++
             let row = document.createElement("div")
             row.dataset.row = rowNumber
-            row.classList.add("circle")
+            row.classList.add("emptyCircle")
             column.appendChild(row)
         })
         main.appendChild(column)
