@@ -9,6 +9,15 @@ const verifyTie = () =>{
 
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
+const updatingGame = (event) =>{
+    let column = event.target.parentElement 
+    let rowOfGame = column.dataset.column - 1
+    let lastIndex = game[rowOfGame].lastIndexOf(0)
+    if(lastIndex !== -1){
+        game[rowOfGame][lastIndex] = 1 
+        console.log(game)
+    }
+}
 const  creatingBoard  = () =>{
     main.innerHTML=''
     game = [
@@ -19,25 +28,19 @@ const  creatingBoard  = () =>{
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0]
     ]
-    console.log(game)
-    console.log(initialGame)
-    for(let i=0; i<game.length;i++){
+    game.forEach((row) =>{
         let column = document.createElement('section')
-        column.addEventListener("click", ()=>{
-            let lastIndex = game[i].lastIndexOf(0)
-            if(lastIndex !==  -1){
-            game[i][lastIndex] =  1
-        }
-    })
-        column.dataset.column  = i+1
-        for(let j=0; j<game[i].length;j++){
-            let circle = document.createElement('div')
-            circle.classList.add("circle")
-            circle.dataset.column  = j+1
-            column.appendChild(circle)
+        column.addEventListener("click", updatingGame)
+        let columnNumber = game.indexOf(row) + 1
+        column.dataset.column = columnNumber
+        for(let i=0; i<row.length;i++){
+            let row = document.createElement("div")
+            row.dataset.row = i
+            row.classList.add("circle")
+            column.appendChild(row)
         }
         main.appendChild(column)
-    }
+    })
 }
 
 let btnStart = document.getElementById('btn-reset')
