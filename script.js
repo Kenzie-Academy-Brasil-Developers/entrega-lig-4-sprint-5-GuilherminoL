@@ -6,6 +6,18 @@ const verifyTie = () =>{
     return tie
 }
 
+let changePlayer = () =>{
+    if (currentPlayer === 2) {
+        currentPlayer = 1
+        return currentPlayer
+    }
+    if (currentPlayer === 1) {
+        currentPlayer = 2
+        return currentPlayer
+    }
+}
+
+let currentPlayer = 1
 
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
