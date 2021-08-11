@@ -9,3 +9,17 @@ main{
     border-radius: 50%;
     background-color: wheat;
 }
+
+.player1{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.player2{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blue;
+}
