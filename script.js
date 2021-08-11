@@ -1,7 +1,10 @@
 const verifyTie = () =>{
+    
     let tie = true
     game.map((line)=>{
-        if (line[0] === 0 ) tie = false
+        if (line[0] === 0 ){
+            tie = false   
+        }
     } )
     return tie
 }
@@ -26,8 +29,18 @@ const updatingGame = (event) =>{
     let rowOfGame = column.dataset.column - 1
     let lastIndex = game[rowOfGame].lastIndexOf(0)
     if(lastIndex !== -1){
-        game[rowOfGame][lastIndex] = 1 
-    }
+        game[rowOfGame][lastIndex] = currentPlayer
+        if(currentPlayer === 1){
+            column.childNodes[lastIndex].classList.add('player1')
+            verifyTie()
+            
+            
+        } if(currentPlayer === 2){
+            column.childNodes[lastIndex].classList.add('player2')
+            verifyTie()
+        }
+        changePlayer()
+    }   
 }
 const  creatingBoard  = () =>{
     main.innerHTML=''
@@ -44,6 +57,7 @@ const  creatingBoard  = () =>{
         column.addEventListener("click", updatingGame)
         let columnNumber = game.indexOf(row) + 1
         column.dataset.column = columnNumber
+        column.classList.add('sec')
         let rowNumber = 0;
         row.forEach( () =>{
             rowNumber++
@@ -54,6 +68,7 @@ const  creatingBoard  = () =>{
         })
         main.appendChild(column)
     })
+    
 }
 
 let btnStart = document.getElementById('btn-reset')
