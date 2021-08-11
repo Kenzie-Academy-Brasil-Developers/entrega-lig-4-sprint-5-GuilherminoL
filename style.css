@@ -1,7 +1,9 @@
 main{
     display: flex;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: #F8F7FF;
+    width: 95%;
+    margin: 0 auto;
 }
 .emptyCircle{
     width: 20px;
