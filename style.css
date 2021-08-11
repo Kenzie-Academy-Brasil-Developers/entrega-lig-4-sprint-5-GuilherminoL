@@ -1,24 +1,23 @@
 main{
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-evenly;
     background-color: #F8F7FF;
-    width: 98.5vw;
-    height: 97.4vw;
+    width: 95%;
+    height: 94vw;
     max-width: 420px;
     max-height: 415px;
-    padding: 0;
     margin: 0 auto;
     border-radius: 5px;
+    box-shadow: 0px 4px 4px rgb(0, 0 ,0 ,0.25);
 }
 .emptyCircle{
     width: 40px;
     height: 40px;
+    margin: 1px;
     border-radius: 50%;
     background-color: #F8F7FF;
     border: 1px solid rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
-    margin: 1px;
+    box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25);    
 }
 .column {
     margin: 0px;
