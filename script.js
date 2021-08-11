@@ -34,7 +34,7 @@ const  creatingBoard  = () =>{
         let columnNumber = game.indexOf(row) + 1
         column.dataset.column = columnNumber
         let rowNumber = 0;
-        row.forEach((rowPosition)=>{
+        row.forEach(()=>{
             rowNumber++
             let row = document.createElement("div")
             row.dataset.row = rowNumber
