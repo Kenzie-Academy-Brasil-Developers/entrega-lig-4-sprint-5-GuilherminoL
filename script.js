@@ -33,12 +33,14 @@ const  creatingBoard  = () =>{
         column.addEventListener("click", updatingGame)
         let columnNumber = game.indexOf(row) + 1
         column.dataset.column = columnNumber
-        for(let i=0; i<row.length;i++){
+        let rowNumber = 0;
+        row.forEach((rowPosition)=>{
+            rowNumber++
             let row = document.createElement("div")
-            row.dataset.row = i
+            row.dataset.row = rowNumber
             row.classList.add("circle")
             column.appendChild(row)
-        }
+        })
         main.appendChild(column)
     })
 }
