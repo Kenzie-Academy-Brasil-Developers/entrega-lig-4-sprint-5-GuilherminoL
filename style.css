@@ -3,7 +3,7 @@ main{
     flex-wrap: wrap;
     background-color: black;
 }
-.circle{
+.emptyCircle{
     width: 20px;
     height: 20px;
     border-radius: 50%;
