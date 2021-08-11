@@ -1,3 +1,12 @@
+:root {
+    --main-white: #F8F7FF;
+    --light-green: #61E786;
+    --light-blue: #9792E3;
+    --light-red: #E34234;
+    --dark-blue: #004E64;
+    --dark-purple: #592941;
+}
+
 main{
     display: flex;
     flex-wrap: wrap;
