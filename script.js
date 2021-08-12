@@ -224,5 +224,6 @@ const  creatingBoard  = () =>{
 }
 
 creatingBoard()
-
-
+//btnStart.classList.add("btn-start");
+// btnStart.innerText = "Reset";
+// btnStart.classList.add("btn-reset");
