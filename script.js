@@ -1,3 +1,4 @@
+
 const validateVictory = () => {
   rowCompare();
   columnCompare();
@@ -19,6 +20,7 @@ const columnCompare = () => {
         countPlayerColumn++;
         if (countPlayerColumn === 4) {
           isWinner(1);
+
         }
       } else {
         countPlayerColumn = 0;
@@ -28,6 +30,7 @@ const columnCompare = () => {
         countComputerColumn++;
         if (countComputerColumn === 4) {
           isWinner(2);
+
         }
       } else {
         countComputerColumn = 0;
@@ -41,23 +44,28 @@ const rowCompare = () => {
   let countComputerRow = 0;
 
   for (let i = 0; i < game.length; i++) {
-    for (let j = 0; j < game[i].length; j++) {
+   
+
+    for(let j = 0; j < game[i].length;j++){
       let currentValue = game[i][j];
-      let y = i;
+      let y = i
       countPlayerRow = 0;
       countComputerRow = 0;
 
-      while (y < 5) {
-        let nextPosition = game[y][j];
-        if (nextPosition === 0) break;
-        if (nextPosition === currentValue) {
+      while (y<5){
+        
+       let nextPosition = game[y][j]
+        if (nextPosition === 0 ) break
+        if (nextPosition === currentValue){
           y++;
           countComputerRow++;
-        } else break;
-        if (countComputerRow === 4) {
-          isWinner(currentValue);
-          break;
         }
+        else break
+        if(countComputerRow === 4){
+          isWinner(currentValue)
+          break
+        }
+        
       }
     }
   }
@@ -81,6 +89,7 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j + 3]
         ) {
           isWinner(currentPosition);
+
         }
 
         if (
@@ -89,61 +98,45 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j - 3]
         ) {
           isWinner(currentPosition);
+
         }
       }
     }
-    changePlayer();
   }
 };
 
 const isWinner = (player) => {
-  const winMessage = document.getElementsByClassName("victoryPopup")[0];
-  const btnPlay = document.createElement("button");
-  btnPlay.id = "btn-reset";
-  btnPlay.innerText = "Jogar";
-  winMessage.innerText = "Vitória do jogador " + player;
-  btnPlay.addEventListener("click", creatingBoard);
-  winMessage.appendChild(btnPlay);
-  winMessage.classList.remove("hidden");
+  const winMessage = document.getElementsByClassName('victoryPopup')[0]
+  const btnPlay = document.createElement('button')
+  btnPlay.id='btn-reset'
+  btnPlay.innerText = 'Jogar'
+  winMessage.innerText = 'Vitória do jogador ' + player
+  btnPlay.addEventListener('click', creatingBoard)
+  winMessage.appendChild(btnPlay)
+  winMessage.classList.remove('hidden')
+
 };
 
-const verifyTie = () => {
-  let tie = true;
-  game.map((line) => {
-    if (line[0] === 0) {
-      tie = false;
+const verifyTie = () =>{
+    
+    let tie = true
+    game.map((line)=>{
+        if (line[0] === 0 ){
+            tie = false   
+        }
+    } )
+    return tie
+}
+
+let changePlayer = () =>{
+    if (currentPlayer === 2) {
+        currentPlayer = 1
+        return currentPlayer
     }
-  });
-  return tie;
-};
-
-let changePlayer = () => {
-  if (currentPlayer === 2) {
-    currentPlayer = 1;
-    return currentPlayer;
-  }
-  if (currentPlayer === 1) {
-    currentPlayer = 2;
-    return currentPlayer;
-  }
-};
-
-let currentPlayer = 1;
-
-let main = document.getElementsByTagName("main")[0];
-let previous = 0;
-const updatingGame = (event) => {
-  let column = event.target.parentElement;
-  let rowOfGame = column.dataset.column - 1;
-  let lastIndex = game[rowOfGame].lastIndexOf(0);
-  if (lastIndex !== -1) {
-    game[rowOfGame][lastIndex] = currentPlayer;
     if (currentPlayer === 1) {
-      column.childNodes[lastIndex].classList.add("player1");
-      verifyTie();
-      validateVictory();
+        currentPlayer = 2
+        return currentPlayer
     }
-
 }
 
 let currentPlayer = 1
@@ -181,13 +174,11 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-          validateVictory()
-          verifyTie()
+         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-          validateVictory()
-          verifyTie()
+         
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
@@ -231,4 +222,7 @@ const  creatingBoard  = () =>{
     popupDiv.className = 'victoryPopup hidden'
     main.appendChild(popupDiv)
 }
-creatingBoard();
+
+creatingBoard()
+
+
