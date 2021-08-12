@@ -149,7 +149,7 @@ const updatingGame = (event) =>{
     if(event.target.classList.contains('column')){
 
       let column = event.target
-      console.log(column)
+     
       let rowOfGame = column.dataset.column - 1;
       let lastIndex = game[rowOfGame].lastIndexOf(0);
       if (lastIndex !== -1) {
@@ -167,7 +167,7 @@ const updatingGame = (event) =>{
       }
     }if(event.target.classList.contains("emptyCircle")){
       let column = event.target.parentElement
-      console.log(column)
+      
       let rowOfGame = column.dataset.column - 1;
       let lastIndex = game[rowOfGame].lastIndexOf(0);
       if (lastIndex !== -1) {
