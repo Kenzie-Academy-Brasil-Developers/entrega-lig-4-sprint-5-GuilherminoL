@@ -7,11 +7,11 @@
   --dark-purple: #592941;
   --main-font: 'Dosis', sans-serif;
 }
-
 body {
   background-color: var(--light-green);
   font-family: var(--main-font);
 }
+
 .victoryPopup{
   display: flex;
   flex-direction:column;
@@ -33,7 +33,6 @@ body {
   justify-content:center;
   align-items: center;
   font-size: 30px;
-
 }
 .hidden{
   display:none !important;
@@ -58,6 +57,42 @@ main{
   border: 3px solid var(--dark-blue);
 }
 
+.btn-start {
+    width: 139px;
+    height: 44px;
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    font-family: var(--main-font);
+    margin: 25px auto;
+    display: block;
+}
+.btn-start:active,
+  .btn-reset:active {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
+
+/* .btn-reset {
+  width: 139px;
+  height: 44px;
+  left: calc(50% - 139px / 2 + 0.5px);
+  top: calc(50% - 44px / 2 + 218px);
+  background: var(--light-blue);
+  border-radius: 5px;
+  border: 1px solid var(--light-blue);
+  color: var(--main-white);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: var(--main-font);
+  } */
+
 .emptyCircle{
   width: 35px;
   height: 35px;
@@ -67,14 +102,12 @@ main{
   border: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25); 
 }
-
 .player1{
   width: 35px;
   height: 35px;
   border-radius: 50%;
   background-color: var(--light-red);
 }
-
 .player2{
   width: 35px;
   height: 35px;
@@ -82,11 +115,29 @@ main{
   background-color: var(--light-blue);   
 }
 .column {
-  
   margin: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .btn-start {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
+  .btn-start:hover,
+  .btn-reset:hover {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
+  .btn-start:active,
+  .btn-reset:active {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
 }
