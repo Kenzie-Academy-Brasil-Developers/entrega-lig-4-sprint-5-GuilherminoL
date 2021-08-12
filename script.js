@@ -188,6 +188,7 @@ const  creatingBoard  = () =>{
             column.appendChild(row)
         })
         column.classList.add("column")
+        
         main.classList.remove("mainPlayer2")
         main.classList.add("mainPlayer1")
         main.appendChild(column)
