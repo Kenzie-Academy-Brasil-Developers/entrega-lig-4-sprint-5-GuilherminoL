@@ -20,7 +20,6 @@ const columnCompare = () => {
         countPlayerColumn++;
         if (countPlayerColumn === 4) {
           isWinner(1);
-          console.log('a');
 
         }
       } else {
@@ -31,7 +30,6 @@ const columnCompare = () => {
         countComputerColumn++;
         if (countComputerColumn === 4) {
           isWinner(2);
-          console.log('a');
 
         }
       } else {
@@ -91,7 +89,6 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j + 3]
         ) {
           isWinner(currentPosition);
-          console.log('a');
 
         }
 
@@ -101,7 +98,6 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j - 3]
         ) {
           isWinner(currentPosition);
-          console.log('a');
 
         }
       }
@@ -109,9 +105,16 @@ const transverseCompare = () => {
   }
 };
 
-const isWinner = () => {
+const isWinner = (player) => {
   const winMessage = document.getElementsByClassName('victoryPopup')[0]
+  const btnPlay = document.createElement('button')
+  btnPlay.id='btn-reset'
+  btnPlay.innerText = 'Jogar'
+  winMessage.innerText = 'Vitória do jogador ' + player
+  btnPlay.addEventListener('click', creatingBoard)
+  winMessage.appendChild(btnPlay)
   winMessage.classList.remove('hidden')
+
 };
 
 const verifyTie = () =>{
@@ -193,7 +196,5 @@ const  creatingBoard  = () =>{
     main.appendChild(popupDiv)
 }
 
-let btnStart = document.getElementById('btn-reset')
-
-btnStart.addEventListener('click', creatingBoard)
+creatingBoard
 
