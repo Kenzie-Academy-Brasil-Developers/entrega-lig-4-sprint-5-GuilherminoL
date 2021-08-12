@@ -196,5 +196,5 @@ const  creatingBoard  = () =>{
     main.appendChild(popupDiv)
 }
 
-creatingBoard
+creatingBoard()
 
