@@ -117,7 +117,7 @@ const verifyTie = () =>{
     return tie
 }
 
-let changePlayer = () =>{
+const changePlayer = () =>{
     if (currentPlayer === 2) {
         currentPlayer = 1
         return currentPlayer
