@@ -34,6 +34,26 @@ body {
   align-items: center;
   font-size: 30px;
 }
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 73px;
+  background: var(--light-blue);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-bottom: 70px ;
+}
+.headerTitle {
+  width: 100px;
+  height: 61px;
+  font: normal normal 3rem/61px var(--main-font);
+  color: var(--main-white);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+}
 .hidden{
   display:none !important;
 }
@@ -122,7 +142,26 @@ main{
   align-items: center;
   width: 100%;
 }
+.instructions{
+  display: none;
+}
 @media screen and (min-width: 1024px) {
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 90vw;
+    height: 131px;
+    border-radius: 5px;
+    margin: 23px auto 0;
+    margin-bottom: 20px;
+  }
+  .headerTitle {
+    width: 220px;
+    height: 100px;
+    font: normal 600 68px/86px var(--main-font);
+  }
   .btn-start {
     color: var(--main-white);
     background-color: var(--light-blue);
@@ -141,3 +180,4 @@ main{
     border: var(--light-blue);
   }
 }
+
