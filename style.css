@@ -35,6 +35,28 @@ body {
     font-size: 30px;
 
 }
+.instructions{
+    display: flex;
+    flex-direction:column;
+    background-color: red;
+    position: absolute;
+    width: 95%;
+    height: 94vw;
+    max-width: 420px;
+    max-height: 415px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
 .hidden{
     display:none !important;
 }
@@ -78,4 +100,30 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+.startGameAnimation{
+    animation-name: startGameAnimation;
+    animation-duration:4s;
+}
+.winnerAnimation{
+    animation-name: startGameAnimation;
+    animation-duration:2s;
+}
+
+.shadeOutAnimation{
+    animation-name: shadeOutAnimation;
+    animation-duration:2s;
+}
+
+@keyframes startGameAnimation {
+    from {  
+       opacity: 0;}
+    to { 
+        opacity: 100%;}
+}
+@keyframes shadeOutAnimation {
+    from {  
+        opacity: 100%;}
+     to { 
+         opacity: 0;}
 }
