@@ -20,6 +20,7 @@ const columnCompare = () => {
         countPlayerColumn++;
         if (countPlayerColumn === 4) {
           isWinner(1);
+
         }
       } else {
         countPlayerColumn = 0;
@@ -29,6 +30,7 @@ const columnCompare = () => {
         countComputerColumn++;
         if (countComputerColumn === 4) {
           isWinner(2);
+
         }
       } else {
         countComputerColumn = 0;
@@ -60,7 +62,7 @@ const rowCompare = () => {
         }
         else break
         if(countComputerRow === 4){
-          isWinner(currentValue);
+          isWinner(currentValue)
           break
         }
         
@@ -87,6 +89,7 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j + 3]
         ) {
           isWinner(currentPosition);
+
         }
 
         if (
@@ -95,15 +98,23 @@ const transverseCompare = () => {
           currentPosition === game[i + 3][j - 3]
         ) {
           isWinner(currentPosition);
+
         }
       }
     }
   }
 };
 
-const isWinner = () => {
-  let winner = currentPosition.id;
-  return `The winner is: ${winner}!!`;
+const isWinner = (player) => {
+  const winMessage = document.getElementsByClassName('victoryPopup')[0]
+  const btnPlay = document.createElement('button')
+  btnPlay.id='btn-reset'
+  btnPlay.innerText = 'Jogar'
+  winMessage.innerText = 'Vitória do jogador ' + player
+  btnPlay.addEventListener('click', creatingBoard)
+  winMessage.appendChild(btnPlay)
+  winMessage.classList.remove('hidden')
+
 };
 
 const verifyTie = () =>{
@@ -141,11 +152,12 @@ const updatingGame = (event) =>{
         if(currentPlayer === 1){
             column.childNodes[lastIndex].classList.add('player1')
             verifyTie()
-            
+            validateVictory()
             
         } if(currentPlayer === 2){
             column.childNodes[lastIndex].classList.add('player2')
             verifyTie()
+            validateVictory()
         }
         changePlayer()
     }   
@@ -178,9 +190,10 @@ const  creatingBoard  = () =>{
         main.appendChild(column)
     })
     
+    let popupDiv = document.createElement('div')
+    popupDiv.className = 'victoryPopup hidden'
+    main.appendChild(popupDiv)
 }
 
-let btnStart = document.getElementById('btn-reset')
-
-btnStart.addEventListener('click', creatingBoard)
+creatingBoard()
 
