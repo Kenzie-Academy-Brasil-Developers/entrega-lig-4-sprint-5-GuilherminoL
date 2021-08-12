@@ -58,19 +58,25 @@ main{
 }
 
 .btn-start {
-  width: 139px;
-  height: 44px;
-  left: calc(50% - 139px / 2 + 0.5px);
-  top: calc(50% - 44px / 2 + 218px);
-  background: var(--main-white);
-  border-radius: 5px;
-  border: 1px solid var(--light-blue);
-  color: var(--light-blue);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 23px;
-  font-family: var(--main-font);
+    width: 139px;
+    height: 44px;
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    font-family: var(--main-font);
+    margin: 25px auto;
+    display: block;
 }
+.btn-start:active,
+  .btn-reset:active {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
 
 /* .btn-reset {
   width: 139px;
@@ -86,7 +92,6 @@ main{
   line-height: 23px;
   font-family: var(--main-font);
   } */
-
 
 .emptyCircle{
   width: 35px;
