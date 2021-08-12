@@ -144,25 +144,26 @@ let currentPlayer = 1
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
 const updatingGame = (event) =>{
-    
-    let column = event.target 
-    
+    if(!event.target.classList.contains("emptyCircle")){
+      let column = event.target
+    console.log(event.target)
     let rowOfGame = column.dataset.column - 1
     let lastIndex = game[rowOfGame].lastIndexOf(0)
     if(lastIndex !== -1){
         game[rowOfGame][lastIndex] = currentPlayer
         if(currentPlayer === 1){
             column.childNodes[lastIndex].classList.add('player1')
-            verifyTie()
-            validateVictory()
+           
+            
         } if(currentPlayer === 2){
             column.childNodes[lastIndex].classList.add('player2')
-            verifyTie()
-            validateVictory()
+            
         }
         changePlayer()
         main.classList.toggle(`mainPlayer2`)
-    }   
+    }
+    }
+       
 }
 const  creatingBoard  = () =>{
     main.innerHTML=''

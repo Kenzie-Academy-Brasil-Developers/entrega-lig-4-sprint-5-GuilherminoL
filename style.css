@@ -40,7 +40,6 @@ body {
 }
 main{
   display: flex;
-  justify-content: space-evenly;
   background-color: #F8F7FF;
   width: 95%;
   height: 94vw;
@@ -83,9 +82,10 @@ main{
   background-color: var(--light-blue);   
 }
 .column {
-  background-color: black;
+  
   margin: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: 100%;
 }
