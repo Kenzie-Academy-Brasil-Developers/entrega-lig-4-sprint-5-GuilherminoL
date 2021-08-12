@@ -110,4 +110,17 @@ header {
     height: 100px;
     font: normal 600 68px/86px var(--main-font);
   }
+
+  .btn-start {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
+
+  .btn-start:hover,
+  .btn-reset:hover {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
 }
