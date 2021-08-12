@@ -1,3 +1,111 @@
+
+const validateVictory = () => {
+  rowCompare();
+  columnCompare();
+  transverseCompare();
+};
+
+const columnCompare = () => {
+  let countPlayerColumn = 0;
+  let countComputerColumn = 0;
+
+  for (let i = 0; i < game.length; i++) {
+    countPlayerColumn = 0;
+    countComputerColumn = 0;
+
+    for (let j = 0; j < game[i].length; j++) {
+      let currentPosition = game[i][j];
+
+      if (currentPosition === 1) {
+        countPlayerColumn++;
+        if (countPlayerColumn === 4) {
+          isWinner(1);
+        }
+      } else {
+        countPlayerColumn = 0;
+      }
+
+      if (currentPosition === 2) {
+        countComputerColumn++;
+        if (countComputerColumn === 4) {
+          isWinner(2);
+        }
+      } else {
+        countComputerColumn = 0;
+      }
+    }
+  }
+};
+
+const rowCompare = () => {
+  let countPlayerRow = 0;
+  let countComputerRow = 0;
+
+  for (let i = 0; i < game.length; i++) {
+   
+
+    for(let j = 0; j < game[i].length;j++){
+      let currentValue = game[i][j];
+      let y = i
+      countPlayerRow = 0;
+      countComputerRow = 0;
+
+      while (y<5){
+        
+       let nextPosition = game[y][j]
+        if (nextPosition === 0 ) break
+        if (nextPosition === currentValue){
+          y++;
+          countComputerRow++;
+        }
+        else break
+        if(countComputerRow === 4){
+          isWinner(currentValue);
+          break
+        }
+        
+      }
+    }
+  }
+};
+
+const transverseCompare = () => {
+  let countUpwards = 0;
+  let countDownwards = 0;
+
+  for (let i = 0; i <= 5; i++) {
+    countUpwards = 0;
+    countDownwards = 0;
+
+    for (let j = 0; j <= 6; j++) {
+      let currentPosition = game[i][j];
+
+      if (currentPosition !== 0) {
+        if (
+          currentPosition === game[i + 1][j + 1] &&
+          currentPosition === game[i + 2][j + 2] &&
+          currentPosition === game[i + 3][j + 3]
+        ) {
+          isWinner(currentPosition);
+        }
+
+        if (
+          currentPosition === game[i + 1][j - 1] &&
+          currentPosition === game[i + 2][j - 2] &&
+          currentPosition === game[i + 3][j - 3]
+        ) {
+          isWinner(currentPosition);
+        }
+      }
+    }
+  }
+};
+
+const isWinner = () => {
+  let winner = currentPosition.id;
+  return `The winner is: ${winner}!!`;
+};
+
 const verifyTie = () =>{
     
     let tie = true
@@ -66,6 +174,7 @@ const  creatingBoard  = () =>{
             row.classList.add("emptyCircle")
             column.appendChild(row)
         })
+        column.classList.add("column")
         main.appendChild(column)
     })
     
@@ -74,3 +183,4 @@ const  creatingBoard  = () =>{
 let btnStart = document.getElementById('btn-reset')
 
 btnStart.addEventListener('click', creatingBoard)
+
