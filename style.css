@@ -1,17 +1,17 @@
 :root {
-  --main-white: #f8f7ff;
-  --light-green: #61e786;
-  --light-blue: #9792e3;
-  --light-red: #e34234;
-  --dark-blue: #004e64;
+  --main-white: #F8F7FF;
+  --light-green: #61E786;
+  --light-blue: #9792E3;
+  --light-red: #E34234;
+  --dark-blue: #004E64;
   --dark-purple: #592941;
-  --main-font: "Dosis", sans-serif;
+  --main-font: 'Dosis', sans-serif;
 }
-
 body {
   background-color: var(--light-green);
   font-family: var(--main-font);
 }
+
 
 main {
   display: flex;
@@ -39,27 +39,74 @@ header {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
 }
-
-.emptyCircle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: wheat;
-}
-
-.player1 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+.victoryPopup{
+  display: flex;
+  flex-direction:column;
   background-color: red;
+  position: absolute;
+  width: 95%;
+  height: 94vw;
+  max-width: 420px;
+  max-height: 415px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-size: 30px;
+}
+.hidden{
+  display:none !important;
+}
+main{
+  display: flex;
+  background-color: #F8F7FF;
+  width: 95%;
+  height: 94vw;
+  max-width: 420px;
+  max-height: 415px;
+  margin: 0 auto;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgb(0, 0 ,0 ,0.25);
+}
+.mainPlayer1 {
+  border: 3px solid var(--light-red);
 }
 
-.player2 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: blue;
+.mainPlayer2 {
+  border: 3px solid var(--dark-blue);
 }
+
+.btn-start {
+    width: 139px;
+    height: 44px;
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    font-family: var(--main-font);
+    margin: 25px auto;
+    display: block;
+
+}
+.btn-start:active,
+  .btn-reset:active {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
+
+
 
 @media screen and (min-width: 1024px) {
   header {
@@ -77,5 +124,74 @@ header {
     width: 220px;
     height: 100px;
     font: normal 600 68px/86px var(--main-font);
-  }
+/* .btn-reset {
+  width: 139px;
+  height: 44px;
+  left: calc(50% - 139px / 2 + 0.5px);
+  top: calc(50% - 44px / 2 + 218px);
+  background: var(--light-blue);
+  border-radius: 5px;
+  border: 1px solid var(--light-blue);
+  color: var(--main-white);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: var(--main-font);
+  } */
+
+.emptyCircle{
+  width: 35px;
+  height: 35px;
+  margin: 1px;
+  border-radius: 50%;
+  background-color: var(--main-white);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25); 
 }
+.player1{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: var(--light-red);
+}
+.player2{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: var(--light-blue);   
+}
+.column {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .btn-start {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
+  .btn-start:hover,
+  .btn-reset:hover {
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
+  .btn-start:active,
+  .btn-reset:active {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 876px;
+    height: 131px;
+    border-radius: 5px;
+    margin: 23px auto 0;
+  }
