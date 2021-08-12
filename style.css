@@ -40,38 +40,6 @@ header {
   text-transform: uppercase;
 }
 
-.btn-start {
-  position: absolute;
-  width: 139px;
-  height: 44px;
-  left: calc(50% - 139px / 2 + 0.5px);
-  top: calc(50% - 44px / 2 + 218px);
-  background: var(--main-white);
-  border-radius: 5px;
-  border: 1px solid var(--light-blue);
-  color: var(--light-blue);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 23px;
-  font-family: var(--main-font);
-}
-
-.btn-reset {
-  position: absolute;
-  width: 139px;
-  height: 44px;
-  left: calc(50% - 139px / 2 + 0.5px);
-  top: calc(50% - 44px / 2 + 218px);
-  background: var(--light-blue);
-  border-radius: 5px;
-  border: 1px solid var(--light-blue);
-  color: var(--main-white);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 23px;
-  font-family: var(--main-font);
-}
-
 .emptyCircle {
   width: 20px;
   height: 20px;
@@ -109,18 +77,5 @@ header {
     width: 220px;
     height: 100px;
     font: normal 600 68px/86px var(--main-font);
-  }
-
-  .btn-start {
-    color: var(--main-white);
-    background-color: var(--light-blue);
-    border: var(--light-blue);
-  }
-
-  .btn-start:hover,
-  .btn-reset:hover {
-    color: var(--light-blue);
-    background-color: var(--main-white);
-    border: 2px solid var(--light-blue);
   }
 }
