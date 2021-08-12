@@ -71,3 +71,7 @@ const creatingBoard = () => {
 let btnStart = document.getElementById("btn-reset");
 
 btnStart.addEventListener("click", creatingBoard);
+
+btnStart.classList.add("btn-start");
+btnStart.innerText = "Reset";
+btnStart.classList.add("btn-reset");
