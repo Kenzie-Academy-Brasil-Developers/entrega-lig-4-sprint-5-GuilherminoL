@@ -1,40 +1,80 @@
 :root {
-    --main-white: #F8F7FF;
-    --light-green: #61E786;
-    --light-blue: #9792E3;
-    --light-red: #E34234;
-    --dark-blue: #004E64;
-    --dark-purple: #592941;
-    --main-font: 'Dosis', sans-serif;
+  --main-white: #f8f7ff;
+  --light-green: #61e786;
+  --light-blue: #9792e3;
+  --light-red: #e34234;
+  --dark-blue: #004e64;
+  --dark-purple: #592941;
+  --main-font: "Dosis", sans-serif;
 }
 
 body {
-    background-color: var(--light-green);
-    font-family: var(--main-font);
+  background-color: var(--light-green);
+  font-family: var(--main-font);
 }
 
-main{
+main {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+}
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 73px;
+  background: var(--light-blue);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.headerTitle {
+  width: 100px;
+  height: 61px;
+  font: normal normal 3rem/61px var(--main-font);
+  color: var(--main-white);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.emptyCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: wheat;
+}
+
+.player1 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.player2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
     display: flex;
-    flex-wrap: wrap;
-    background-color: black;
-}
-.emptyCircle{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: wheat;
-}
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 876px;
+    height: 131px;
+    border-radius: 5px;
+    margin: 23px auto 0;
+  }
 
-.player1{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: red;
-}
-
-.player2{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: blue;
+  .headerTitle {
+    width: 220px;
+    height: 100px;
+    font: normal 600 68px/86px var(--main-font);
+  }
 }
