@@ -174,13 +174,11 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-          validateVictory()
-          verifyTie()
+         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-          validateVictory()
-          verifyTie()
+         
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
