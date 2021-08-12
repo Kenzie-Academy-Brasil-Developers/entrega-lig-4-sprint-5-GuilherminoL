@@ -4,7 +4,7 @@ const validateVictory = () => {
   transverseCompare();
 };
 
-const rowCompare = () => {
+const columnCompare = () => {
   let countPlayerColumn = 0;
   let countComputerColumn = 0;
 
@@ -36,7 +36,7 @@ const rowCompare = () => {
   }
 };
 
-const columnCompare = () => {
+const rowCompare = () => {
   let countPlayerRow = 0;
   let countComputerRow = 0;
 
