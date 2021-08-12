@@ -1,109 +1,105 @@
-// função que válida a condição de vitória
 const validateVictory = () => {
-  for (let i = 0; i < game.length; i++) {
-    for (let j = 0; j < game[i].length; j++) {
-      currentPosition = game[i][j];
-      rowCompare();
-      columnCompare();
-      transverseCompare();
-    }
-  }
+  rowCompare();
+  columnCompare();
+  transverseCompare();
 };
 
-// função de comparação horizontal
 const rowCompare = () => {
-  let countNextRow = 0;
-  let countPreviousRow = 0;
+  let countPlayerColumn = 0;
+  let countComputerColumn = 0;
 
-  for (let i = 0; i < 7; i++) {
-    let nextRowPosition = currentPosition[i][j + 1];
-    let previousRowPosition = currentPosition[i][j - 1];
+  for (let i = 0; i < game.length; i++) {
+    countPlayerColumn = 0;
+    countComputerColumn = 0;
 
-    if (currentPosition === nextRowPosition) {
-      countNextRow++;
-      if (countNextRow === 4) {
-        isWinner();
+    for (let j = 0; j < game[i].length; j++) {
+      let currentPosition = game[i][j];
+
+      if (currentPosition === 1) {
+        countPlayerColumn++;
+        if (countPlayerColumn === 4) {
+          isWinner();
+        }
+      } else {
+        countPlayerColumn = 0;
       }
-    }
 
-    if (currentPosition === previousRowPosition) {
-      countPreviousRow++;
-      if (countPreviousRow === 4) {
-        isWinner();
+      if (currentPosition === 2) {
+        countComputerColumn++;
+        if (countComputerColumn === 4) {
+          isWinner();
+        }
+      } else {
+        countComputerColumn = 0;
       }
     }
   }
 };
 
-// função de comparação vertical
 const columnCompare = () => {
-  let countNextColumn = 0;
-  let countPreviousColumn = 0;
+  let countPlayerRow = 0;
+  let countComputerRow = 0;
 
-  for (let i = 0; i < 4; i++) {
-    let nextColumnPosition = currentPosition[i + 1][j];
-    let previousColumnPosition = currentPosition[i - 1][j];
+  for (let i = 0; i < 5; i++) {
+    countPlayerRow = 0;
+    countComputerRow = 0;
 
-    if (currentPosition === nextColumnPosition) {
-      countNextColumn++;
-      if (countNextColumn === 4) {
-        isWinner();
+    for (let j = 0; j < 6; j++) {
+      let currentPosition = game[j][i];
+
+      if (currentPosition === 1) {
+        countPlayerRow++;
+        if (countPlayerRow === 4) {
+          isWinner();
+        }
+      } else {
+        countPlayerRow = 0;
       }
-    }
 
-    if (currentPosition === previousColumnPosition) {
-      countPreviousColumn++;
-      if (countPreviousColumn === 4) {
-        isWinner();
+      if (currentPosition === 2) {
+        countComputerRow++;
+        if (countComputerRow === 4) {
+          isWinner();
+        }
+      } else {
+        countComputerRow = 0;
       }
     }
   }
 };
 
-// função de comparação transversal
 const transverseCompare = () => {
-  let countUpperRight = 0;
-  let countUpperLeft = 0;
-  let countLowerRight = 0;
-  let countLowerLeft = 0;
+  let countUpwards = 0;
+  let countDownwards = 0;
 
-  for (let i = 0; i < 6; i++) {
-    let upperRightPosition = currentPosition[i + 1][j + 1];
-    let upperLeftPosition = currentPosition[i + 1][j - 1];
-    let lowerRightPosition = currentPosition[i - 1][j + 1];
-    let lowerLeftPosition = currentPosition[i - 1][j - 1];
+  for (let i = 0; i <= 5; i++) {
+    countUpwards = 0;
+    countDownwards = 0;
 
-    if (currentPosition === upperRightPosition) {
-      countUpperRight++;
-      if (countUpperRight === 4) {
-        isWinner();
-      }
-    }
+    for (let j = 0; j <= 6; j++) {
+      let currentPosition = game[i][j];
 
-    if (currentPosition === upperLeftPosition) {
-      countUpperLeft++;
-      if (countUpperLeft === 4) {
-        isWinner();
-      }
-    }
+      if (currentPosition !== 0) {
+        if (
+          currentPosition === game[i + 1][j + 1] &&
+          currentPosition === game[i + 2][j + 2] &&
+          currentPosition === game[i + 3][j + 3]
+        ) {
+          isWinner();
+        }
 
-    if (currentPosition === lowerRightPosition) {
-      countLowerRight++;
-      if (countLowerRight === 4) {
-        isWinner();
-      }
-    }
-
-    if (currentPosition === lowerLeftPosition) {
-      countLowerLeft++;
-      if (countLowerLeft) {
-        isWinner();
+        if (
+          currentPosition === game[i + 1][j - 1] &&
+          currentPosition === game[i + 2][j - 2] &&
+          currentPosition === game[i + 3][j - 3]
+        ) {
+          isWinner();
+        }
       }
     }
   }
 };
 
-// função que retorna o nome do vencedor
 const isWinner = () => {
   let winner = currentPosition.id;
   return `The winner is: ${winner}!!`;
