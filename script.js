@@ -165,14 +165,15 @@ const updatingGame = (event) =>{
 }
 const  creatingBoard  = () =>{
     main.innerHTML=''
-    game = [
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0]
-    ]
+     game = [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
+    ];
     game.forEach((row) =>{
         let column = document.createElement('section')
         column.addEventListener("click", updatingGame)
