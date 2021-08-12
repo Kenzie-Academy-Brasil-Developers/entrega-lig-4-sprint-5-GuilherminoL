@@ -84,7 +84,7 @@ const transverseCompare = () => {
         if (
           currentPosition === game[i + 1][j + 1] &&
           currentPosition === game[i + 2][j + 2] &&
-          currentPosition === game[i + 3][j + 3]
+          currentPosition === game[i + 3][j + 3] 
         ) {
           isWinner();
         }
