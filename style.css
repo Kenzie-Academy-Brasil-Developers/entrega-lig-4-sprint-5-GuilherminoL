@@ -1,0 +1,40 @@
+:root {
+    --main-white: #F8F7FF;
+    --light-green: #61E786;
+    --light-blue: #9792E3;
+    --light-red: #E34234;
+    --dark-blue: #004E64;
+    --dark-purple: #592941;
+    --main-font: 'Dosis', sans-serif;
+}
+
+body {
+    background-color: var(--light-green);
+    font-family: var(--main-font);
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+}
+.emptyCircle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: wheat;
+}
+
+.player1{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.player2{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blue;
+}

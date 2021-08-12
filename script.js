@@ -1,110 +1,73 @@
-// função que válida a condição de vitória
-const validateVictory = () => {
-  for (let i = 0; i < game.length; i++) {
-    for (let j = 0; j < game[i].length; j++) {
-      currentPosition = game[i][j];
-      rowCompare();
-      columnCompare();
-      transverseCompare();
+const verifyTie = () => {
+  let tie = true;
+  game.map((line) => {
+    if (line[0] === 0) {
+      tie = false;
     }
+  });
+  return tie;
+};
+
+let changePlayer = () => {
+  if (currentPlayer === 2) {
+    currentPlayer = 1;
+    return currentPlayer;
+  }
+  if (currentPlayer === 1) {
+    currentPlayer = 2;
+    return currentPlayer;
   }
 };
 
-// função de comparação horizontal
-const rowCompare = () => {
-  let countNextRow = 0;
-  let countPreviousRow = 0;
+let currentPlayer = 1;
 
-  for (let i = 0; i < 7; i++) {
-    let nextRowPosition = currentPosition[i][j + 1];
-    let previousRowPosition = currentPosition[i][j - 1];
-
-    if (currentPosition === nextRowPosition) {
-      countNextRow++;
-      if (countNextRow === 4) {
-        isWinner();
-      }
+let main = document.getElementsByTagName("main")[0];
+let previous = 0;
+const updatingGame = (event) => {
+  let column = event.target.parentElement;
+  let rowOfGame = column.dataset.column - 1;
+  let lastIndex = game[rowOfGame].lastIndexOf(0);
+  if (lastIndex !== -1) {
+    game[rowOfGame][lastIndex] = currentPlayer;
+    if (currentPlayer === 1) {
+      column.childNodes[lastIndex].classList.add("player1");
+      verifyTie();
     }
-
-    if (currentPosition === previousRowPosition) {
-      countPreviousRow++;
-      if (countPreviousRow === 4) {
-        isWinner();
-      }
+    if (currentPlayer === 2) {
+      column.childNodes[lastIndex].classList.add("player2");
+      verifyTie();
     }
+    changePlayer();
   }
 };
-
-// função de comparação vertical
-const columnCompare = () => {
-  let countNextColumn = 0;
-  let countPreviousColumn = 0;
-
-  for (let i = 0; i < 4; i++) {
-    let nextColumnPosition = currentPosition[i + 1][j];
-    let previousColumnPosition = currentPosition[i - 1][j];
-
-    if (currentPosition === nextColumnPosition) {
-      countNextColumn++;
-      if (countNextColumn === 4) {
-        isWinner();
-      }
-    }
-
-    if (currentPosition === previousColumnPosition) {
-      countPreviousColumn++;
-      if (countPreviousColumn === 4) {
-        isWinner();
-      }
-    }
-  }
+const creatingBoard = () => {
+  main.innerHTML = "";
+  game = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+  ];
+  game.forEach((row) => {
+    let column = document.createElement("section");
+    column.addEventListener("click", updatingGame);
+    let columnNumber = game.indexOf(row) + 1;
+    column.dataset.column = columnNumber;
+    column.classList.add("sec");
+    let rowNumber = 0;
+    row.forEach(() => {
+      rowNumber++;
+      let row = document.createElement("div");
+      row.dataset.row = rowNumber;
+      row.classList.add("emptyCircle");
+      column.appendChild(row);
+    });
+    main.appendChild(column);
+  });
 };
 
-// função de comparação transversal
-const transverseCompare = () => {
-  let countUpperRight = 0;
-  let countUpperLeft = 0;
-  let countLowerRight = 0;
-  let countLowerLeft = 0;
+let btnStart = document.getElementById("btn-reset");
 
-  for (let i = 0; i < 6; i++) {
-    let upperRightPosition = currentPosition[i + 1][j + 1];
-    let upperLeftPosition = currentPosition[i + 1][j - 1];
-    let lowerRightPosition = currentPosition[i - 1][j + 1];
-    let lowerLeftPosition = currentPosition[i - 1][j - 1];
-
-    if (currentPosition === upperRightPosition) {
-      countUpperRight++;
-      if (countUpperRight === 4) {
-        isWinner();
-      }
-    }
-
-    if (currentPosition === upperLeftPosition) {
-      countUpperLeft++;
-      if (countUpperLeft === 4) {
-        isWinner();
-      }
-    }
-
-    if (currentPosition === lowerRightPosition) {
-      countLowerRight++;
-      if (countLowerRight === 4) {
-        isWinner();
-      }
-    }
-
-    if (currentPosition === lowerLeftPosition) {
-      countLowerLeft++;
-      if (countLowerLeft) {
-        isWinner();
-      }
-    }
-  }
-};
-
-// função que retorna o nome do vencedor
-const isWinner = () => {
-  let winner = currentPosition.id;
-  return `The winner is: ${winner}!!`;
-};
+btnStart.addEventListener("click", creatingBoard);
