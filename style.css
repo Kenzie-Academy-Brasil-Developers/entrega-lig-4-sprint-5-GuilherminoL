@@ -1,20 +1,20 @@
 :root {
-  --main-white: #f8f7ff;
-  --light-green: #61e786;
-  --light-blue: #9792e3;
-  --light-red: #e34234;
-  --dark-blue: #004e64;
+  --main-white: #F8F7FF;
+  --light-green: #61E786;
+  --light-blue: #9792E3;
+  --light-red: #E34234;
+  --dark-blue: #004E64;
   --dark-purple: #592941;
-  --main-font: "Dosis", sans-serif;
+  --main-font: 'Dosis', sans-serif;
 }
-
 body {
   background-color: var(--light-green);
   font-family: var(--main-font);
 }
-.victoryPopup {
+
+.victoryPopup{
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   background-color: red;
   position: absolute;
   width: 95%;
@@ -23,24 +23,23 @@ body {
   max-height: 415px;
   margin: 0 auto;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(8.5px);
-  -webkit-backdrop-filter: blur(8.5px);
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
   font-size: 30px;
 }
-.hidden {
-  display: none !important;
+.hidden{
+  display:none !important;
 }
-main {
+main{
   display: flex;
-  justify-content: space-evenly;
-  background-color: #f8f7ff;
+  background-color: #F8F7FF;
   width: 95%;
   height: 94vw;
   max-width: 420px;
@@ -48,7 +47,7 @@ main {
   margin: 0 auto;
   border: 3px solid transparent;
   border-radius: 5px;
-  box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgb(0, 0 ,0 ,0.25);
 }
 .mainPlayer1 {
   border: 3px solid var(--light-red);
@@ -59,7 +58,6 @@ main {
 }
 
 .btn-start {
-  position: absolute;
   width: 139px;
   height: 44px;
   left: calc(50% - 139px / 2 + 0.5px);
@@ -75,7 +73,6 @@ main {
 }
 
 /* .btn-reset {
-  position: absolute;
   width: 139px;
   height: 44px;
   left: calc(50% - 139px / 2 + 0.5px);
@@ -90,50 +87,48 @@ main {
   font-family: var(--main-font);
   } */
 
-.emptyCircle {
-  width: 40px;
-  height: 40px;
+
+.emptyCircle{
+  width: 35px;
+  height: 35px;
   margin: 1px;
   border-radius: 50%;
   background-color: var(--main-white);
   border: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25);
+  box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25); 
 }
-
-.player1 {
-  width: 40px;
-  height: 40px;
+.player1{
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: var(--light-red);
 }
-
-.player2 {
-  width: 40px;
-  height: 40px;
+.player2{
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: var(--light-blue);
+  background-color: var(--light-blue);   
 }
 .column {
   margin: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
-
 @media screen and (min-width: 1024px) {
   .btn-start {
     color: var(--main-white);
     background-color: var(--light-blue);
     border: var(--light-blue);
   }
-
   .btn-start:hover,
   .btn-reset:hover {
     color: var(--light-blue);
     background-color: var(--main-white);
     border: 2px solid var(--light-blue);
   }
-
   .btn-start:active,
   .btn-reset:active {
     color: var(--main-white);
