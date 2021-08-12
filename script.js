@@ -67,6 +67,7 @@ const  creatingBoard  = () =>{
             row.classList.add("emptyCircle")
             column.appendChild(row)
         })
+        column.classList.add("column")
         main.appendChild(column)
     })
     

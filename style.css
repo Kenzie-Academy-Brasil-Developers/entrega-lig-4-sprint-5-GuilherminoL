@@ -15,26 +15,42 @@ body {
 
 main{
     display: flex;
-    flex-wrap: wrap;
-    background-color: black;
+    justify-content: space-evenly;
+    background-color: #F8F7FF;
+    width: 95%;
+    height: 94vw;
+    max-width: 420px;
+    max-height: 415px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgb(0, 0 ,0 ,0.25);
 }
 .emptyCircle{
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
+    margin: 1px;
     border-radius: 50%;
-    background-color: wheat;
+    background-color: var(--main-white);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25); 
 }
 
 .player1{
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: red;
+    background-color: var(--light-red);
 }
 
 .player2{
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: var(--light-blue);   
+}
+.column {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
