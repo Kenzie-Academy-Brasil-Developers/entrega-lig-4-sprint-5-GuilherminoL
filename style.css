@@ -1,0 +1,56 @@
+:root {
+    --main-white: #F8F7FF;
+    --light-green: #61E786;
+    --light-blue: #9792E3;
+    --light-red: #E34234;
+    --dark-blue: #004E64;
+    --dark-purple: #592941;
+    --main-font: 'Dosis', sans-serif;
+}
+
+body {
+    background-color: var(--light-green);
+    font-family: var(--main-font);
+}
+
+main{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #F8F7FF;
+    width: 95%;
+    height: 94vw;
+    max-width: 420px;
+    max-height: 415px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgb(0, 0 ,0 ,0.25);
+}
+.emptyCircle{
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    border-radius: 50%;
+    background-color: var(--main-white);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25); 
+}
+
+.player1{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-red);
+}
+
+.player2{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-blue);   
+}
+.column {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
