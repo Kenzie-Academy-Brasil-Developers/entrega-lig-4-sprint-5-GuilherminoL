@@ -19,7 +19,7 @@ const columnCompare = () => {
       if (currentPosition === 1) {
         countPlayerColumn++;
         if (countPlayerColumn === 4) {
-          isWinner();
+          isWinner(1);
         }
       } else {
         countPlayerColumn = 0;
@@ -28,7 +28,7 @@ const columnCompare = () => {
       if (currentPosition === 2) {
         countComputerColumn++;
         if (countComputerColumn === 4) {
-          isWinner();
+          isWinner(2);
         }
       } else {
         countComputerColumn = 0;
@@ -41,29 +41,29 @@ const rowCompare = () => {
   let countPlayerRow = 0;
   let countComputerRow = 0;
 
-  for (let i = 0; i < 5; i++) {
-    countPlayerRow = 0;
-    countComputerRow = 0;
+  for (let i = 0; i < game.length; i++) {
+   
 
-    for (let j = 0; j < 6; j++) {
-      let currentPosition = game[j][i];
+    for(let j = 0; j < game[i].length;j++){
+      let currentValue = game[i][j];
+      let y = i
+      countPlayerRow = 0;
+      countComputerRow = 0;
 
-      if (currentPosition === 1) {
-        countPlayerRow++;
-        if (countPlayerRow === 4) {
-          isWinner();
+      while (y<5){
+        
+       let nextPosition = game[y][j]
+        if (nextPosition === 0 ) break
+        if (nextPosition === currentValue){
+          y++;
+          countComputerRow++;
         }
-      } else {
-        countPlayerRow = 0;
-      }
-
-      if (currentPosition === 2) {
-        countComputerRow++;
-        if (countComputerRow === 4) {
-          isWinner();
+        else break
+        if(countComputerRow === 4){
+          isWinner(currentValue);
+          break
         }
-      } else {
-        countComputerRow = 0;
+        
       }
     }
   }
@@ -86,7 +86,7 @@ const transverseCompare = () => {
           currentPosition === game[i + 2][j + 2] &&
           currentPosition === game[i + 3][j + 3]
         ) {
-          isWinner();
+          isWinner(currentPosition);
         }
 
         if (
@@ -94,7 +94,7 @@ const transverseCompare = () => {
           currentPosition === game[i + 2][j - 2] &&
           currentPosition === game[i + 3][j - 3]
         ) {
-          isWinner();
+          isWinner(currentPosition);
         }
       }
     }
