@@ -1,4 +1,4 @@
-
+let currentPlayer = 1
 const validateVictory = () => {
   rowCompare();
   columnCompare();
@@ -107,6 +107,11 @@ const transverseCompare = () => {
 
 const isWinner = (player) => {
   const winMessage = document.getElementsByClassName('victoryPopup')[0]
+
+  if (winMessage.className.includes('startGameAnimation')) {
+    winMessage.classList.remove('startGameAnimation')
+  }
+
   const btnPlay = document.createElement('button')
   btnPlay.id='btn-reset'
   btnPlay.innerText = 'Jogar'
@@ -114,7 +119,11 @@ const isWinner = (player) => {
   btnPlay.addEventListener('click', creatingBoard)
   winMessage.appendChild(btnPlay)
   winMessage.classList.remove('hidden')
+  winMessage.classList.add('winnerAnimation')
 
+  setTimeout(() => {
+    winMessage.classList.remove('winnerAnimation')
+  }, 2000);
 };
 
 const verifyTie = () =>{
@@ -139,7 +148,7 @@ let changePlayer = () =>{
     }
 }
 
-let currentPlayer = 1
+
 
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
@@ -222,8 +231,21 @@ const  creatingBoard  = () =>{
     popupDiv.className = 'victoryPopup hidden'
     main.appendChild(popupDiv)
 }
+window.onload = () => {main.firstElementChild.classList.toggle('startGameAnimation')}
 
-creatingBoard()
-//btnStart.classList.add("btn-start");
-// btnStart.innerText = "Reset";
-// btnStart.classList.add("btn-reset");
+const startGame = document.getElementById('btnStartGame')
+startGame.addEventListener('click', () => {
+  main.firstElementChild.classList.toggle('startGameAnimation')
+  startGame.parentElement.classList.add('shadeOutAnimation')
+  setTimeout(() => {
+    startGame.parentElement.classList.add('hidden')
+    creatingBoard()
+    const newMain = document.getElementsByTagName('main')[0]
+    let gameColumns = [...(newMain.children)]
+    gameColumns.map((element) =>{
+    element.classList.add('startGameAnimation')
+  })
+  },2000)
+  
+})
+
