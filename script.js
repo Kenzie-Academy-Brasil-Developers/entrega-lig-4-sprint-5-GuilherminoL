@@ -1,6 +1,6 @@
 let currentPlayer = 1;
 document.addEventListener(ResizeObserverSize, () =>console.log(document.body.clientWidth))
-const validateVictory = () => {
+const validateVictory = (event) => {
   rowCompare()
   columnCompare()
   transverseCompare();
@@ -66,85 +66,31 @@ const rowCompare = () => {
 };
 
 const transverseCompare = () => {
-  let countUpwards = 0;
-  let countDownwards = 0;
-  
-    for(let i=0; i<=5;i++){
-        if(game[3][i] === 1){
-            if(game[4][i+1] === 1 && game[5][i+2] === 1 && game[6][i+3] === 1){
-                isWinner(1)
-            }
-        }
-        if(game[3][i] === 2){
-          if(game[4][i+1] === 2 && game[5][i+2] === 2 && game[6][i+3] === 2){
-            isWinner(2)
-          }
-        }
-        if(game[3][i] === 1){
-          if(game[2][i-1] === 1 && game[4][i+1] === 1 && game[5][i+2] === 1){
-            isWinner(1)
-          }
-        }
-        if(game[3][i] === 2){
-          if(game[2][i-1] === 2 && game[4][i+1] === 2 && game[5][i+2] === 2){
-            isWinner(2)
-          }
-        }
-        if(game[3][i]=== 1){
-          if(game[1][i-2]=== 1 && game[2][i-1] === 1 && game[4][i+1] === 1){
-            isWinner(1)
-          }
-        }
-        if(game[3][i]=== 2){
-          if(game[1][i-2]=== 2 && game[2][i-1] === 2 && game[4][i+1] === 2){
-            isWinner(2)
-          }
-        }
-        if(game[3][i]===1){
-          if(game[4][i+1]===1 && game[5][i+2] && game[6][i+3]){
-            isWinner(1)
-          }
-        }
 
-
-
-        if(game[3][i]===1){
-          if(game[2][i+1]===1 && game[1][i+2]===1 && game[0][i+3]===1 ){
-            isWinner(1)
-          }
-        }if(game[3][i]===2){
-          if(game[2][i+1]===2 && game[1][i+2]===2 && game[0][i+3]===2 ){
-            isWinner(2)
-          }
-        }
-        if(game[3][i]===1){
-          if(game[2][i+1] === 1 && game[4][i-1]===1 && game[5][i-2] === 1){
-            isWinner(1)
-          }
-        }
-        if(game[3][i]===2){
-          if(game[2][i+1] === 2 && game[4][i-1]===2 && game[5][i-2] === 2){
-            isWinner(2)
-          }
-        }
-        if(game[3][i]===1){
-          if(game[2][i+1] === 1 && game[1][i+2] === 1 && game[4][i-1] === 1){
-            isWinner(1)
-          }
-        }if(game[3][i]===2){
-          if(game[2][i+1] === 2 && game[1][i+2] === 2 && game[4][i-1] === 2){
-            isWinner(2)
-          }
-        }if(game[3][i]===1){
-          if(game[4][i-1]===1 && game[5][i-2] === 1 && game[6][i-3] ===1){
-            isWinner(1)
-          }
-        }if(game[3][i]===2){
-          if(game[4][i-1]===2 && game[5][i-2] === 2 && game[6][i-3] ===2){
-            isWinner(2)
-          }
+  for(let i=3; i<game.length-3;i++){
+    let row = game[i]
+    for(let j=0; j<row.length; j++){
+      let cell = row[j]
+      if(cell !==0){
+        if(cell === game[i+1][j+1] && cell === game[i+2][j+2] && cell === game[i+3][j+3]){
+            // DIREITA PRA CIMA
+            isWinner(cell)
+            
+        }if(cell === game[i+1][j-1] && cell === game[i+2][j-2] && cell === game[i+3][j-3]){
+            // DIREITA PRA BAIXO
+            isWinner(cell)
+        }if(cell === game[i-1][j+1] && cell === game[i-2][j+2] && cell === game[i-3][j+3]){
+            // ESQUERDA BAIXO CIMA
+            isWinner(cell)
+            
+        }if(cell === game[i-1][j-1] && cell === game[i-2][j-2] && cell === game[i-3][j-3]){
+            isWinner(cell)
         }
       }
+     
+    }
+  }
+  
 };
 
 const isWinner = (player) => {
@@ -205,7 +151,7 @@ const verifyTie = () => {
   return tie;
 };
 
-let changePlayer = () => {
+const changePlayer = () => {
   if (currentPlayer === 2) {
     currentPlayer = 1;
     return currentPlayer;
