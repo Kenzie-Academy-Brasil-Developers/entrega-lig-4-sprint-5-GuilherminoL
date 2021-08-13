@@ -1,7 +1,6 @@
 
 const validateVictory = () => {
-  rowCompare();
-  columnCompare();
+ 
   transverseCompare();
 };
 
@@ -74,8 +73,85 @@ const rowCompare = () => {
 const transverseCompare = () => {
   let countUpwards = 0;
   let countDownwards = 0;
+  console.log(game)
+    for(let i=0; i<5;i++){
+        if(game[3][i] === 1){
+            if(game[4][i+1] === 1 && game[5][i+2] === 1 && game[6][i+3] === 1){
+                console.log('diagonal 4 direita')
+            }
+        }
+        if(game[3][i] === 2){
+          if(game[4][i+1] === 2 && game[5][i+2] === 2 && game[6][i+3] === 2){
+            console.log('diagonal 4 direita')
+          }
+        }
+        if(game[3][i] === 1){
+          if(game[2][i-1] === 1 && game[4][i+1] === 1 && game[5][i+2] === 1){
+            console.log('win dia 1pcima')
+          }
+        }
+        if(game[3][i] === 2){
+          if(game[2][i-1] === 2 && game[4][i+1] === 2 && game[5][i+2] === 2){
+            console.log('win dia1pcima')
+          }
+        }
+        if(game[3][i]=== 1){
+          if(game[1][i-2]=== 1 && game[2][i-1] === 1 && game[4][i+1] === 1){
+            console.log("win2pcimadireita")
+          }
+        }
+        if(game[3][i]=== 2){
+          if(game[1][i-2]=== 2 && game[2][i-1] === 2 && game[4][i+1] === 2){
+            console.log("win2pcimadireita")
+          }
+        }
+        if(game[3][i]===1){
+          if(game[4][i+1]===1 && game[5][i+2] && game[6][i+3]){
+            console.log('bum')
+          }
+        }
 
-  for (let i = 0; i <= 5; i++) {
+
+
+        if(game[3][i]===1){
+          if(game[2][i+1]===1 && game[1][i+2]===1 && game[0][i+3]===1 ){
+            console.log('apartirdomeio')
+          }
+        }if(game[3][i]===2){
+          if(game[2][i+1]===2 && game[1][i+2]===2 && game[0][i+3]===2 ){
+            console.log('apartirdomeio')
+          }
+        }
+        if(game[3][i]===1){
+          if(game[2][i+1] === 1 && game[4][i-1]===1 && game[5][i-2] === 1){
+            console.log('bahguri')
+          }
+        }
+        if(game[3][i]===2){
+          if(game[2][i+1] === 2 && game[4][i-1]===2 && game[5][i-2] === 2){
+            console.log('bahguri')
+          }
+        }
+        if(game[3][i]===1){
+          if(game[2][i+1] === 1 && game[1][i+2] === 1 && game[4][i-1] === 1){
+            console.log('win2pcimaesq')
+          }
+        }if(game[3][i]===2){
+          if(game[2][i+1] === 2 && game[1][i+2] === 2 && game[4][i-1] === 2){
+            console.log('win2pcimaesq')
+          }
+        }if(game[3][i]===1){
+          if(game[4][i-1]===1 && game[5][i-2] === 1 && game[6][i-3] ===1){
+            console.log('windomeiopcima')
+          }
+        }if(game[3][i]===2){
+          if(game[4][i-1]===2 && game[5][i-2] === 2 && game[6][i-3] ===2){
+            console.log('windomeiopcima')
+          }
+        }
+      }
+    
+ /* for (let i = 0; i <= 5; i++) {
     countUpwards = 0;
     countDownwards = 0;
 
@@ -102,7 +178,7 @@ const transverseCompare = () => {
         }
       }
     }
-  }
+  }*/
 };
 
 const isWinner = (player) => {
@@ -156,11 +232,13 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-         
+          validateVictory()
+          verifyTie()
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-         
+          validateVictory()
+          verifyTie()
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
@@ -174,11 +252,13 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-         
+          validateVictory()
+          verifyTie()
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-         
+          validateVictory()
+          verifyTie()
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
