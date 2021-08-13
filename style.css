@@ -124,6 +124,7 @@ main{
 .btn-reset {
   width: 139px;
   height: 44px;
+  margin-top:15px;
   left: calc(50% - 139px / 2 + 0.5px);
   top: calc(50% - 44px / 2 + 218px);
   background: var(--light-blue);

@@ -115,6 +115,7 @@ const isWinner = (player) => {
   const btnPlay = document.createElement('button')
   btnPlay.id='btn-reset'
   btnPlay.innerText = 'Jogar'
+  btnPlay.classList.add('btn-reset')
   winMessage.innerText = 'Vitória do jogador ' + player
   btnPlay.addEventListener('click', creatingBoard)
   winMessage.appendChild(btnPlay)
@@ -165,7 +166,6 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
@@ -183,11 +183,9 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-         
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
