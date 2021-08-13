@@ -273,9 +273,9 @@ const updatingGame = (event) => {
       changeDiscClass();
       main.classList.toggle(`mainPlayer2`);
     }
-    
+    changePlayer()
   }
-  changePlayer()
+  
 };
 const creatingBoard = () => {
   main.innerHTML = "";
