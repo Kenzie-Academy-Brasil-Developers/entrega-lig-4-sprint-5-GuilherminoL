@@ -1,3 +1,4 @@
+let currentPlayer = 1;
 const validateVictory = () => {
   rowCompare();
   columnCompare();
@@ -92,19 +93,54 @@ const transverseCompare = () => {
         }
       }
     }
-    changePlayer();
   }
 };
 
 const isWinner = (player) => {
   const winMessage = document.getElementsByClassName("victoryPopup")[0];
+
+  if (winMessage.className.includes("startGameAnimation")) {
+    winMessage.classList.remove("startGameAnimation");
+  }
+
   const btnPlay = document.createElement("button");
   btnPlay.id = "btn-reset";
   btnPlay.innerText = "Jogar";
+  btnPlay.classList.add("btn-reset");
   winMessage.innerText = "Vitória do jogador " + player;
   btnPlay.addEventListener("click", creatingBoard);
   winMessage.appendChild(btnPlay);
   winMessage.classList.remove("hidden");
+  winMessage.classList.add("winnerAnimation");
+
+  setTimeout(() => {
+    winMessage.classList.remove("winnerAnimation");
+  }, 2000);
+};
+
+const tiePopup = () => {
+  const tieMessage = document.createElement("div");
+  tieMessage.id = "tie";
+  const tieH1 = document.createElement("h1");
+  const tieP = document.createElement("p");
+  tieH1.innerText = "Parabéns !!!";
+  tieP.innerText = "Vocês fizeram o mais difícil e empataram o jogo...";
+  tieMessage.appendChild(tieH1);
+  tieMessage.appendChild(tieP);
+  tieMessage.classList.add("winnerAnimation");
+  const btnPlay = document.createElement("button");
+  btnPlay.id = "btn-resetTie";
+  btnPlay.innerText = "Jogar";
+  btnPlay.classList.add("btn-reset");
+  tieMessage.appendChild(btnPlay);
+  main.appendChild(tieMessage);
+
+  btnPlay.addEventListener("click", () => {
+    tieMessage.classList.add("shadeOutAnimation");
+    setTimeout(() => {
+      creatingBoard();
+    }, 2000);
+  });
 };
 
 const verifyTie = () => {
@@ -114,6 +150,7 @@ const verifyTie = () => {
       tie = false;
     }
   });
+  if (tie === true) tiePopup();
   return tie;
 };
 
@@ -151,39 +188,57 @@ const changeDiscClass = () => {
   }
 };
 
-let currentPlayer = 1;
 let main = document.getElementsByTagName("main")[0];
 let previous = 0;
 const updatingGame = (event) => {
-  let column = event.target.parentElement;
-  let rowOfGame = column.dataset.column - 1;
-  let lastIndex = game[rowOfGame].lastIndexOf(0);
-  if (lastIndex !== -1) {
-    game[rowOfGame][lastIndex] = currentPlayer;
-    if (currentPlayer === 1) {
-      column.childNodes[lastIndex].classList.add("player1");
-      verifyTie();
-      validateVictory();
+  if (event.target.classList.contains("column")) {
+    let column = event.target;
+
+    let rowOfGame = column.dataset.column - 1;
+    let lastIndex = game[rowOfGame].lastIndexOf(0);
+    if (lastIndex !== -1) {
+      game[rowOfGame][lastIndex] = currentPlayer;
+      if (currentPlayer === 1) {
+        column.childNodes[lastIndex].classList.add("player1");
+      }
+      if (currentPlayer === 2) {
+        column.childNodes[lastIndex].classList.add("player2");
+      }
+      changePlayer();
+      main.classList.toggle(`mainPlayer2`);
     }
-    if (currentPlayer === 2) {
-      column.childNodes[lastIndex].classList.add("player2");
-      verifyTie();
-      validateVictory();
+  }
+  if (event.target.classList.contains("emptyCircle")) {
+    let column = event.target.parentElement;
+
+    let rowOfGame = column.dataset.column - 1;
+    let lastIndex = game[rowOfGame].lastIndexOf(0);
+    if (lastIndex !== -1) {
+      game[rowOfGame][lastIndex] = currentPlayer;
+      if (currentPlayer === 1) {
+        verifyTie();
+        column.childNodes[lastIndex].classList.add("player1");
+      }
+      if (currentPlayer === 2) {
+        column.childNodes[lastIndex].classList.add("player2");
+        verifyTie();
+      }
+      changeDiscClass();
+      changePlayer();
+      main.classList.toggle(`mainPlayer2`);
     }
-    changeDiscClass();
-    changePlayer();
-    main.classList.toggle(`mainPlayer2`);
   }
 };
 const creatingBoard = () => {
   main.innerHTML = "";
   game = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
   ];
   game.forEach((row) => {
     let column = document.createElement("section");
@@ -200,6 +255,7 @@ const creatingBoard = () => {
       column.appendChild(row);
     });
     column.classList.add("column");
+
     main.classList.remove("mainPlayer2");
     main.classList.add("mainPlayer1");
     main.appendChild(column);
@@ -210,5 +266,21 @@ const creatingBoard = () => {
   main.appendChild(popupDiv);
   currentDivTwo.classList.add("playerOpacity");
 };
+window.onload = () => {
+  main.firstElementChild.classList.toggle("startGameAnimation");
+};
 
-creatingBoard();
+const startGame = document.getElementById("btnStartGame");
+startGame.addEventListener("click", () => {
+  main.firstElementChild.classList.toggle("startGameAnimation");
+  startGame.parentElement.classList.add("shadeOutAnimation");
+  setTimeout(() => {
+    startGame.parentElement.classList.add("hidden");
+    creatingBoard();
+    const newMain = document.getElementsByTagName("main")[0];
+    let gameColumns = [...newMain.children];
+    gameColumns.map((element) => {
+      element.classList.add("startGameAnimation");
+    });
+  }, 2000);
+});

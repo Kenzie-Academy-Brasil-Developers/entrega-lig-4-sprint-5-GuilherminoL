@@ -7,11 +7,11 @@
   --dark-purple: #592941;
   --main-font: "Dosis", sans-serif;
 }
-
 body {
   background-color: var(--light-green);
   font-family: var(--main-font);
 }
+
 .victoryPopup {
   display: flex;
   flex-direction: column;
@@ -34,12 +34,74 @@ body {
   align-items: center;
   font-size: 30px;
 }
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 73px;
+  background: var(--light-blue);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-bottom: 70px;
+}
+.headerTitle {
+  width: 100px;
+  height: 61px;
+  font: normal normal 3rem/61px var(--main-font);
+  color: var(--main-white);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+}
+.instructions {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  position: absolute;
+  width: 95%;
+  height: 94vw;
+  max-width: 420px;
+  max-height: 415px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hidden {
   display: none !important;
 }
+#tie {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  position: absolute;
+  width: 95%;
+  height: 94vw;
+  max-width: 420px;
+  max-height: 415px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
 main {
   display: flex;
-  justify-content: space-evenly;
   background-color: #f8f7ff;
   width: 95%;
   height: 94vw;
@@ -49,6 +111,14 @@ main {
   border: 3px solid transparent;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.25);
+}
+
+.mainPlayer1 {
+  border: 3px solid var(--light-red);
+}
+
+.mainPlayer2 {
+  border: 3px solid var(--dark-blue);
 }
 
 .currentPlayerOne {
@@ -111,14 +181,6 @@ main {
   opacity: 50%;
 }
 
-.mainPlayer1 {
-  border: 3px solid var(--light-red);
-}
-
-.mainPlayer2 {
-  border: 3px solid var(--dark-blue);
-}
-
 .emptyCircle {
   width: 35px;
   height: 35px;
@@ -128,6 +190,43 @@ main {
   border: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow: inset 0px 4px 4px rgb(0, 0, 0, 0.25);
 }
+.btn-start {
+  width: 139px;
+  height: 44px;
+  color: var(--main-white);
+  background-color: var(--light-blue);
+  border: var(--light-blue);
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: var(--main-font);
+  margin: 25px auto;
+  display: block;
+}
+.btn-start:active,
+.btn-reset:active {
+  transition: 0.75s;
+  color: var(--light-blue);
+  background-color: var(--main-white);
+  border: 2px solid var(--light-blue);
+}
+
+.btn-reset {
+  width: 139px;
+  height: 44px;
+  margin-top: 15px;
+  left: calc(50% - 139px / 2 + 0.5px);
+  top: calc(50% - 44px / 2 + 218px);
+  background: var(--light-blue);
+  border-radius: 5px;
+  border: 1px solid var(--light-blue);
+  color: var(--main-white);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: var(--main-font);
+}
 
 .player1 {
   width: 35px;
@@ -135,7 +234,6 @@ main {
   border-radius: 50%;
   background-color: var(--light-red);
 }
-
 .player2 {
   width: 35px;
   height: 35px;
@@ -147,9 +245,62 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.startGameAnimation {
+  animation-name: startGameAnimation;
+  animation-duration: 4s;
+}
+.winnerAnimation {
+  animation-name: startGameAnimation;
+  animation-duration: 2s;
+}
+
+.shadeOutAnimation {
+  animation-name: shadeOutAnimation;
+  animation-duration: 2s;
 }
 
 @media screen and (min-width: 1024px) {
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 90vw;
+    height: 131px;
+    border-radius: 5px;
+    margin: 23px auto 0;
+    margin-bottom: 20px;
+  }
+
+  .headerTitle {
+    width: 220px;
+    height: 100px;
+    font: normal 600 68px/86px var(--main-font);
+  }
+  .btn-start {
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
+
+  .btn-reset:hover {
+    transition: 0.75s;
+    color: var(--light-blue);
+    background-color: var(--main-white);
+    border: 2px solid var(--light-blue);
+  }
+
+  .btn-reset:active {
+    transition: 0.75s;
+    color: var(--main-white);
+    background-color: var(--light-blue);
+    border: var(--light-blue);
+  }
+
   .flex__player {
     display: flex;
     width: 550px;
@@ -193,5 +344,21 @@ main {
     border: 1px solid rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@keyframes startGameAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes shadeOutAnimation {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
   }
 }
