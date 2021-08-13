@@ -74,8 +74,9 @@ const rowCompare = () => {
 const transverseCompare = () => {
   let countUpwards = 0;
   let countDownwards = 0;
-  console.log(game)
-    for(let i=0; i<5;i++){
+  
+    for(let i=0; i<=5;i++){
+        console.log(i)
         if(game[3][i] === 1){
             if(game[4][i+1] === 1 && game[5][i+2] === 1 && game[6][i+3] === 1){
                 isWinner(1)
