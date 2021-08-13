@@ -1,4 +1,5 @@
 let currentPlayer = 1;
+document.addEventListener(ResizeObserverSize, () =>console.log(document.body.clientWidth))
 const validateVictory = () => {
   rowCompare()
   columnCompare()
@@ -48,7 +49,7 @@ const rowCompare = () => {
       countPlayerRow = 0;
       countComputerRow = 0;
 
-      while (y < 5) {
+      while (y <= 6) {
         let nextPosition = game[y][j];
         if (nextPosition === 0) break;
         if (nextPosition === currentValue) {
@@ -69,7 +70,6 @@ const transverseCompare = () => {
   let countDownwards = 0;
   
     for(let i=0; i<=5;i++){
-        console.log(i)
         if(game[3][i] === 1){
             if(game[4][i+1] === 1 && game[5][i+2] === 1 && game[6][i+3] === 1){
                 isWinner(1)
@@ -222,7 +222,6 @@ let currentDivTwo = document.querySelector(".currentPlayerTwo");
 
 const changeDiscClass = () => {
   let pagewidth = document.documentElement.clientWidth;
-  console.log(currentPlayer);
   if (pagewidth < 1024) {
     discPlayer.classList.toggle("disc__currentPlayerTwo");
   }
@@ -259,7 +258,6 @@ const updatingGame = (event) => {
         verifyTie()
         validateVictory()
       }
-      changePlayer();
       main.classList.toggle(`mainPlayer2`);
     }
   }
@@ -280,11 +278,11 @@ const updatingGame = (event) => {
         verifyTie()
         validateVictory()
       }
-      changeDiscClass();
-      changePlayer();
       main.classList.toggle(`mainPlayer2`);
     }
   }
+  changeDiscClass();
+  changePlayer()
 };
 const creatingBoard = () => {
   main.innerHTML = "";
@@ -313,15 +311,13 @@ const creatingBoard = () => {
     });
     column.classList.add("column");
 
-    main.classList.remove("mainPlayer2");
-    main.classList.add("mainPlayer1");
+    
     main.appendChild(column);
   });
 
   let popupDiv = document.createElement("div");
   popupDiv.className = "victoryPopup hidden";
   main.appendChild(popupDiv);
-  currentDivTwo.classList.add("playerOpacity");
 };
 window.onload = () => {
   main.firstElementChild.classList.toggle("startGameAnimation");
@@ -331,6 +327,11 @@ const startGame = document.getElementById("btnStartGame");
 startGame.addEventListener("click", () => {
   main.firstElementChild.classList.toggle("startGameAnimation");
   startGame.parentElement.classList.add("shadeOutAnimation");
+  discPlayer.classList.remove("disc__currentPlayerTwo")
+  main.classList.remove("mainPlayer2");
+  main.classList.add("mainPlayer1");
+  currentDivOne.classList.remove("playerOpacity")
+  currentDivTwo.classList.add("playerOpacity");
   setTimeout(() => {
     startGame.parentElement.classList.add("hidden");
     creatingBoard();
