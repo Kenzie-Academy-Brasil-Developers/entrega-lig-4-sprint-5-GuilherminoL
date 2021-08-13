@@ -245,6 +245,7 @@ const updatingGame = (event) => {
   let lastIndex = 0;
   let column = 0
   if (event.target.classList.contains("column")) {
+
      column = event.target;
      rowOfGame = column.dataset.column - 1;
      lastIndex = game[rowOfGame].lastIndexOf(0);
@@ -266,6 +267,7 @@ const updatingGame = (event) => {
       column.childNodes[lastIndex].classList.add("player2");
       verifyTie()
       validateVictory()
+
     }
     
   }
