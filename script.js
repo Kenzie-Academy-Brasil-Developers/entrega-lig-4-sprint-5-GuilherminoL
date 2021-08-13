@@ -137,7 +137,22 @@ const tiePopup = () => {
   tieMessage.appendChild(tieH1)
   tieMessage.appendChild(tieP)
   tieMessage.classList.add('winnerAnimation')
+  const btnPlay = document.createElement('button')
+  btnPlay.id='btn-resetTie'
+  btnPlay.innerText = 'Jogar'
+  btnPlay.classList.add('btn-reset')  
+  tieMessage.appendChild(btnPlay)
   main.appendChild(tieMessage)
+
+  btnPlay.addEventListener('click', () => {
+    tieMessage.classList.add('shadeOutAnimation')
+    setTimeout(() => {
+      creatingBoard()
+    },2000)
+    
+    
+  })
+  
 }
 
 const verifyTie = () =>{
@@ -180,12 +195,9 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-          verifyTie()
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-          verifyTie()
-         
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
