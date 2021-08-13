@@ -153,35 +153,59 @@ let changePlayer = () =>{
 let main = document.getElementsByTagName('main')[0]
 let previous =  0;
 const updatingGame = (event) =>{
-    let column = event.target.parentElement 
-    let rowOfGame = column.dataset.column - 1
-    let lastIndex = game[rowOfGame].lastIndexOf(0)
-    if(lastIndex !== -1){
-        game[rowOfGame][lastIndex] = currentPlayer
-        if(currentPlayer === 1){
-            column.childNodes[lastIndex].classList.add('player1')
-            verifyTie()
-            validateVictory()
-            
-        } if(currentPlayer === 2){
-            column.childNodes[lastIndex].classList.add('player2')
-            verifyTie()
-            validateVictory()
-        }
-        changePlayer()
-    }   
+   
     
+    if(event.target.classList.contains('column')){
+
+      let column = event.target
+     
+      let rowOfGame = column.dataset.column - 1;
+      let lastIndex = game[rowOfGame].lastIndexOf(0);
+      if (lastIndex !== -1) {
+        game[rowOfGame][lastIndex] = currentPlayer;
+        if (currentPlayer === 1) {
+          column.childNodes[lastIndex].classList.add("player1");
+         
+        }
+        if (currentPlayer === 2) {
+          column.childNodes[lastIndex].classList.add("player2");
+         
+        }
+        changePlayer();
+        main.classList.toggle(`mainPlayer2`);
+      }
+    }if(event.target.classList.contains("emptyCircle")){
+      let column = event.target.parentElement
+      
+      let rowOfGame = column.dataset.column - 1;
+      let lastIndex = game[rowOfGame].lastIndexOf(0);
+      if (lastIndex !== -1) {
+        game[rowOfGame][lastIndex] = currentPlayer;
+        if (currentPlayer === 1) {
+          column.childNodes[lastIndex].classList.add("player1");
+         
+        }
+        if (currentPlayer === 2) {
+          column.childNodes[lastIndex].classList.add("player2");
+         
+        }
+        changePlayer();
+        main.classList.toggle(`mainPlayer2`);
+      }
+    }
+  
 }
 const  creatingBoard  = () =>{
     main.innerHTML=''
-    game = [
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0]
-    ]
+     game = [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
+    ];
     game.forEach((row) =>{
         let column = document.createElement('section')
         column.addEventListener("click", updatingGame)
@@ -197,6 +221,9 @@ const  creatingBoard  = () =>{
             column.appendChild(row)
         })
         column.classList.add("column")
+        
+        main.classList.remove("mainPlayer2")
+        main.classList.add("mainPlayer1")
         main.appendChild(column)
     })
     
