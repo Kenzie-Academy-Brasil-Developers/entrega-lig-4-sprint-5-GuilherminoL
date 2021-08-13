@@ -241,46 +241,37 @@ const changeDiscClass = () => {
 let main = document.getElementsByTagName("main")[0];
 let previous = 0;
 const updatingGame = (event) => {
+  let rowOfGame = 0 
+  let lastIndex = 0;
+  let column = 0
   if (event.target.classList.contains("column")) {
-    let column = event.target;
 
-    let rowOfGame = column.dataset.column - 1;
-    let lastIndex = game[rowOfGame].lastIndexOf(0);
-    if (lastIndex !== -1) {
-      game[rowOfGame][lastIndex] = currentPlayer;
-      if (currentPlayer === 1) {
-        column.childNodes[lastIndex].classList.add("player1");
-        verifyTie()
-        validateVictory()
-      }
-      if (currentPlayer === 2) {
-        column.childNodes[lastIndex].classList.add("player2");
-        verifyTie()
-        validateVictory()
-      }
-      main.classList.toggle(`mainPlayer2`);
-    }
+     column = event.target;
+     rowOfGame = column.dataset.column - 1;
+     lastIndex = game[rowOfGame].lastIndexOf(0);
   }
   if (event.target.classList.contains("emptyCircle")) {
-    let column = event.target.parentElement;
-
-    let rowOfGame = column.dataset.column - 1;
-    let lastIndex = game[rowOfGame].lastIndexOf(0);
-    if (lastIndex !== -1) {
-      game[rowOfGame][lastIndex] = currentPlayer;
-      if (currentPlayer === 1) {
-        column.childNodes[lastIndex].classList.add("player1");
-        verifyTie()
-        validateVictory()
-      }
-      if (currentPlayer === 2) {
-        column.childNodes[lastIndex].classList.add("player2");
-        verifyTie()
-        validateVictory()
-      }
-      main.classList.toggle(`mainPlayer2`);
-    }
+      column = event.target.parentElement;
+      rowOfGame = column.dataset.column - 1;
+      lastIndex = game[rowOfGame].lastIndexOf(0);
+   
   }
+  if (lastIndex !== -1) {
+    game[rowOfGame][lastIndex] = currentPlayer;
+    if (currentPlayer === 1) {
+      column.childNodes[lastIndex].classList.add("player1");
+      verifyTie()
+      validateVictory()
+    }
+    if (currentPlayer === 2) {
+      column.childNodes[lastIndex].classList.add("player2");
+      verifyTie()
+      validateVictory()
+
+    }
+    
+  }
+  main.classList.toggle(`mainPlayer2`);
   changeDiscClass();
   changePlayer()
 };
