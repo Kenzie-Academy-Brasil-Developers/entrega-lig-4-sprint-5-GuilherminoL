@@ -115,6 +115,7 @@ const isWinner = (player) => {
   const btnPlay = document.createElement('button')
   btnPlay.id='btn-reset'
   btnPlay.innerText = 'Jogar'
+  btnPlay.classList.add('btn-reset')
   winMessage.innerText = 'Vitória do jogador ' + player
   btnPlay.addEventListener('click', creatingBoard)
   winMessage.appendChild(btnPlay)
@@ -126,6 +127,34 @@ const isWinner = (player) => {
   }, 2000);
 };
 
+const tiePopup = () => {
+  const tieMessage = document.createElement('div')
+  tieMessage.id='tie'
+  const tieH1 = document.createElement('h1')
+  const tieP = document.createElement('p')
+  tieH1.innerText = 'Parabéns !!!'
+  tieP.innerText = 'Vocês fizeram o mais difícil e empataram o jogo...'
+  tieMessage.appendChild(tieH1)
+  tieMessage.appendChild(tieP)
+  tieMessage.classList.add('winnerAnimation')
+  const btnPlay = document.createElement('button')
+  btnPlay.id='btn-resetTie'
+  btnPlay.innerText = 'Jogar'
+  btnPlay.classList.add('btn-reset')  
+  tieMessage.appendChild(btnPlay)
+  main.appendChild(tieMessage)
+
+  btnPlay.addEventListener('click', () => {
+    tieMessage.classList.add('shadeOutAnimation')
+    setTimeout(() => {
+      creatingBoard()
+    },2000)
+    
+    
+  })
+  
+}
+
 const verifyTie = () =>{
     
     let tie = true
@@ -134,6 +163,7 @@ const verifyTie = () =>{
             tie = false   
         }
     } )
+    if (tie === true) tiePopup()
     return tie
 }
 
@@ -165,11 +195,9 @@ const updatingGame = (event) =>{
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
           column.childNodes[lastIndex].classList.add("player1");
-         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-         
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
@@ -182,12 +210,12 @@ const updatingGame = (event) =>{
       if (lastIndex !== -1) {
         game[rowOfGame][lastIndex] = currentPlayer;
         if (currentPlayer === 1) {
+          verifyTie()
           column.childNodes[lastIndex].classList.add("player1");
-         
         }
         if (currentPlayer === 2) {
           column.childNodes[lastIndex].classList.add("player2");
-         
+          verifyTie()
         }
         changePlayer();
         main.classList.toggle(`mainPlayer2`);
