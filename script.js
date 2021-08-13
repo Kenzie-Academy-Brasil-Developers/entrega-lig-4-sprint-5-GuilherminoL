@@ -73,14 +73,11 @@ const transverseCompare = () => {
       let cell = row[j]
       if(cell !==0){
         if(cell === game[i+1][j+1] && cell === game[i+2][j+2] && cell === game[i+3][j+3]){
-            // DIREITA PRA CIMA
             isWinner(cell)
             
         }if(cell === game[i+1][j-1] && cell === game[i+2][j-2] && cell === game[i+3][j-3]){
-            // DIREITA PRA BAIXO
             isWinner(cell)
         }if(cell === game[i-1][j+1] && cell === game[i-2][j+2] && cell === game[i-3][j+3]){
-            // ESQUERDA BAIXO CIMA
             isWinner(cell)
             
         }if(cell === game[i-1][j-1] && cell === game[i-2][j-2] && cell === game[i-3][j-3]){
@@ -291,5 +288,6 @@ setInterval(function() {
   }
   if (pagewidth >= 1024 && currentPlayer === 2) {
     discPlayer.classList.remove("disc__currentPlayerTwo");
+    currentDivOne.classList.add("playerOpacity")
   }
 }, 50);
