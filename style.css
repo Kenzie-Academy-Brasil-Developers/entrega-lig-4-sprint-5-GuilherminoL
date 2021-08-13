@@ -54,8 +54,51 @@ header {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
 }
+.instructions{
+    display: flex;
+    flex-direction:column;
+    background-color: red;
+    position: absolute;
+    width: 95%;
+    height: 94vw;
+    max-width: 420px;
+    max-height: 415px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
 .hidden{
   display:none !important;
+}
+#tie{
+    display: flex;
+    flex-direction:column;
+    background-color: red;
+    position: absolute;
+    width: 95%;
+    height: 94vw;
+    max-width: 420px;
+    max-height: 415px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size:20px
 }
 main{
   display: flex;
@@ -93,14 +136,16 @@ main{
 }
 .btn-start:active,
   .btn-reset:active {
+    transition: 0.75s;
     color: var(--light-blue);
     background-color: var(--main-white);
     border: 2px solid var(--light-blue);
   }
 
-/* .btn-reset {
+.btn-reset {
   width: 139px;
   height: 44px;
+  margin-top:15px;
   left: calc(50% - 139px / 2 + 0.5px);
   top: calc(50% - 44px / 2 + 218px);
   background: var(--light-blue);
@@ -111,7 +156,7 @@ main{
   font-size: 18px;
   line-height: 23px;
   font-family: var(--main-font);
-  } */
+  }
 
 .emptyCircle{
   width: 35px;
@@ -142,9 +187,21 @@ main{
   align-items: center;
   width: 100%;
 }
-.instructions{
-  display: none;
+
+.startGameAnimation{
+    animation-name: startGameAnimation;
+    animation-duration:4s;
 }
+.winnerAnimation{
+    animation-name: startGameAnimation;
+    animation-duration:2s;
+}
+
+.shadeOutAnimation{
+    animation-name: shadeOutAnimation;
+    animation-duration:2s;
+}
+
 @media screen and (min-width: 1024px) {
   header {
     display: flex;
@@ -155,8 +212,10 @@ main{
     height: 131px;
     border-radius: 5px;
     margin: 23px auto 0;
-    margin-bottom: 20px;
-  }
+    margin-bottom: 20px;}
+
+
+  
   .headerTitle {
     width: 220px;
     height: 100px;
@@ -167,17 +226,31 @@ main{
     background-color: var(--light-blue);
     border: var(--light-blue);
   }
-  .btn-start:hover,
+
   .btn-reset:hover {
+    transition: 0.75s;
     color: var(--light-blue);
     background-color: var(--main-white);
     border: 2px solid var(--light-blue);
   }
-  .btn-start:active,
+
   .btn-reset:active {
+    transition: 0.75s;
     color: var(--main-white);
     background-color: var(--light-blue);
     border: var(--light-blue);
   }
+}
+@keyframes startGameAnimation {
+    from {  
+       opacity: 0;}
+    to { 
+        opacity: 100%;}
+}
+@keyframes shadeOutAnimation {
+    from {  
+        opacity: 100%;}
+     to { 
+         opacity: 0;}
 }
 
