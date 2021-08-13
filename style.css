@@ -97,7 +97,7 @@ main {
   width: 30px;
   height: 31px;
   border-radius: 50%;
-  background-color: var(--light-blue);
+  background-color: var(--dark-blue);
   margin-left: -10px;
 }
 
@@ -144,15 +144,48 @@ main {
 }
 
 @media screen and (min-width: 1024px) {
+  .flex__player {
+    display: flex;
+    width: 550px;
+    margin: 0 auto;
+  }
+
   .currentPlayerOne {
+    width: 247px;
+    height: 58px;
+    border: 3px solid var(--light-red);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 26px;
   }
 
   .disc__currentPlayerOne {
+    width: 44px;
+    height: 45px;
+    background: var(--light-red);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .currentPlayerTwo {
+    width: 247px;
+    height: 58px;
+    border: 3px solid var(--dark-blue);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 26px;
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .disc__currentPlayerTwo {
+    width: 44px;
+    height: 45px;
+    background: var(--dark-blue);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
