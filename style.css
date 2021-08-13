@@ -17,8 +17,8 @@ body {
   flex-direction: column;
   background-color: red;
   position: absolute;
-  width: 95%;
-  height: 94vw;
+  width: calc(95% - 16px);
+  height: 94vh;
   max-width: 420px;
   max-height: 415px;
   margin: 0 auto;
@@ -60,8 +60,8 @@ header {
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 95%;
-  height: 94vw;
+  width: calc(95% - 16px);
+  height: 94vh;
   max-width: 420px;
   max-height: 415px;
   margin: 0 auto;
@@ -86,8 +86,8 @@ header {
   flex-direction: column;
   background-color: red;
   position: absolute;
-  width: 95%;
-  height: 94vw;
+  width: calc(95% - 16px);
+  height: 94vh;
   max-width: 420px;
   max-height: 415px;
   margin: 0 auto;
@@ -108,7 +108,7 @@ main {
   display: flex;
   background-color: #f8f7ff;
   width: 95%;
-  height: 94vw;
+  height: 94vh;
   max-width: 420px;
   max-height: 415px;
   margin: 0 auto;
