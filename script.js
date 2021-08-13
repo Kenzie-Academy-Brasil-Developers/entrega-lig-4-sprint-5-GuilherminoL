@@ -1,6 +1,7 @@
 
 const validateVictory = () => {
- 
+  rowCompare()
+  columnCompare()
   transverseCompare();
 };
 
@@ -77,37 +78,37 @@ const transverseCompare = () => {
     for(let i=0; i<5;i++){
         if(game[3][i] === 1){
             if(game[4][i+1] === 1 && game[5][i+2] === 1 && game[6][i+3] === 1){
-                console.log('diagonal 4 direita')
+                isWinner(1)
             }
         }
         if(game[3][i] === 2){
           if(game[4][i+1] === 2 && game[5][i+2] === 2 && game[6][i+3] === 2){
-            console.log('diagonal 4 direita')
+            isWinner(2)
           }
         }
         if(game[3][i] === 1){
           if(game[2][i-1] === 1 && game[4][i+1] === 1 && game[5][i+2] === 1){
-            console.log('win dia 1pcima')
+            isWinner(1)
           }
         }
         if(game[3][i] === 2){
           if(game[2][i-1] === 2 && game[4][i+1] === 2 && game[5][i+2] === 2){
-            console.log('win dia1pcima')
+            isWinner(2)
           }
         }
         if(game[3][i]=== 1){
           if(game[1][i-2]=== 1 && game[2][i-1] === 1 && game[4][i+1] === 1){
-            console.log("win2pcimadireita")
+            isWinner(1)
           }
         }
         if(game[3][i]=== 2){
           if(game[1][i-2]=== 2 && game[2][i-1] === 2 && game[4][i+1] === 2){
-            console.log("win2pcimadireita")
+            isWinner(2)
           }
         }
         if(game[3][i]===1){
           if(game[4][i+1]===1 && game[5][i+2] && game[6][i+3]){
-            console.log('bum')
+            isWinner(1)
           }
         }
 
@@ -115,70 +116,41 @@ const transverseCompare = () => {
 
         if(game[3][i]===1){
           if(game[2][i+1]===1 && game[1][i+2]===1 && game[0][i+3]===1 ){
-            console.log('apartirdomeio')
+            isWinner(1)
           }
         }if(game[3][i]===2){
           if(game[2][i+1]===2 && game[1][i+2]===2 && game[0][i+3]===2 ){
-            console.log('apartirdomeio')
+            isWinner(2)
           }
         }
         if(game[3][i]===1){
           if(game[2][i+1] === 1 && game[4][i-1]===1 && game[5][i-2] === 1){
-            console.log('bahguri')
+            isWinner(1)
           }
         }
         if(game[3][i]===2){
           if(game[2][i+1] === 2 && game[4][i-1]===2 && game[5][i-2] === 2){
-            console.log('bahguri')
+            isWinner(2)
           }
         }
         if(game[3][i]===1){
           if(game[2][i+1] === 1 && game[1][i+2] === 1 && game[4][i-1] === 1){
-            console.log('win2pcimaesq')
+            isWinner(1)
           }
         }if(game[3][i]===2){
           if(game[2][i+1] === 2 && game[1][i+2] === 2 && game[4][i-1] === 2){
-            console.log('win2pcimaesq')
+            isWinner(2)
           }
         }if(game[3][i]===1){
           if(game[4][i-1]===1 && game[5][i-2] === 1 && game[6][i-3] ===1){
-            console.log('windomeiopcima')
+            isWinner(1)
           }
         }if(game[3][i]===2){
           if(game[4][i-1]===2 && game[5][i-2] === 2 && game[6][i-3] ===2){
-            console.log('windomeiopcima')
+            isWinner(2)
           }
         }
       }
-    
- /* for (let i = 0; i <= 5; i++) {
-    countUpwards = 0;
-    countDownwards = 0;
-
-    for (let j = 0; j <= 6; j++) {
-      let currentPosition = game[i][j];
-
-      if (currentPosition !== 0) {
-        if (
-          currentPosition === game[i + 1][j + 1] &&
-          currentPosition === game[i + 2][j + 2] &&
-          currentPosition === game[i + 3][j + 3]
-        ) {
-          isWinner(currentPosition);
-
-        }
-
-        if (
-          currentPosition === game[i + 1][j - 1] &&
-          currentPosition === game[i + 2][j - 2] &&
-          currentPosition === game[i + 3][j - 3]
-        ) {
-          isWinner(currentPosition);
-
-        }
-      }
-    }
-  }*/
 };
 
 const isWinner = (player) => {
