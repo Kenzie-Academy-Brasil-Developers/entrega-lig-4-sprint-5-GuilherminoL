@@ -288,6 +288,7 @@ setInterval(function() {
   }
   if (pagewidth >= 1024 && currentPlayer === 2) {
     discPlayer.classList.remove("disc__currentPlayerTwo");
+    currentDivTwo.classList.remove("playerOpacity")
     currentDivOne.classList.add("playerOpacity")
   }
 }, 50);
