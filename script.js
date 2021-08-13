@@ -219,9 +219,10 @@ let changePlayer = () => {
 let discPlayer = document.getElementById("disc__player");
 let currentDivOne = document.querySelector(".currentPlayerOne");
 let currentDivTwo = document.querySelector(".currentPlayerTwo");
+let pagewidth = document.documentElement.clientWidth;
 
 const changeDiscClass = () => {
-  let pagewidth = document.documentElement.clientWidth;
+  pagewidth = document.documentElement.clientWidth;
   if (pagewidth < 1024) {
     discPlayer.classList.toggle("disc__currentPlayerTwo");
   }
@@ -234,6 +235,7 @@ const changeDiscClass = () => {
     if (currentPlayer === 2) {
       currentDivTwo.classList.add("playerOpacity");
       currentDivOne.classList.remove("playerOpacity");
+      discPlayer.classList.remove("disc__currentPlayerTwo");
     }
   }
 };
@@ -273,9 +275,9 @@ const updatingGame = (event) => {
       changeDiscClass();
       main.classList.toggle(`mainPlayer2`);
     }
-    
+    changePlayer()
   }
-  changePlayer()
+  
 };
 const creatingBoard = () => {
   main.innerHTML = "";
@@ -335,3 +337,13 @@ startGame.addEventListener("click", () => {
     });
   }, 2000);
 });
+setInterval(function() {
+  pagewidth = document.documentElement.clientWidth;
+  if (pagewidth < 1024 && currentPlayer === 2) {
+    currentDivOne.classList.remove("playerOpacity");
+    discPlayer.classList.add("disc__currentPlayerTwo");
+  }
+  if (pagewidth >= 1024 && currentPlayer === 2) {
+    discPlayer.classList.remove("disc__currentPlayerTwo");
+  }
+}, 50);
