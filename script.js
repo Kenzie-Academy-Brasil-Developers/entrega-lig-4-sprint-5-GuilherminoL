@@ -262,17 +262,19 @@ const updatingGame = (event) => {
       column.childNodes[lastIndex].classList.add("player1");
       verifyTie()
       validateVictory()
+      changeDiscClass();
+      main.classList.toggle(`mainPlayer2`);
+
     }
     if (currentPlayer === 2) {
       column.childNodes[lastIndex].classList.add("player2");
       verifyTie()
       validateVictory()
-
+      changeDiscClass();
+      main.classList.toggle(`mainPlayer2`);
     }
     
   }
-  main.classList.toggle(`mainPlayer2`);
-  changeDiscClass();
   changePlayer()
 };
 const creatingBoard = () => {
