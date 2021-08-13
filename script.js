@@ -128,8 +128,30 @@ let changePlayer = () => {
   }
 };
 
-let currentPlayer = 1;
+let discPlayer = document.getElementById("disc__player");
+let currentDivOne = document.querySelector(".currentPlayerOne");
+let currentDivTwo = document.querySelector(".currentPlayerTwo");
 
+const changeDiscClass = () => {
+  let pagewidth = document.documentElement.clientWidth;
+  console.log(currentPlayer);
+  if (pagewidth < 1024) {
+    discPlayer.classList.toggle("disc__currentPlayerTwo");
+  }
+
+  if (pagewidth >= 1024) {
+    if (currentPlayer === 1) {
+      currentDivOne.classList.add("playerOpacity");
+      currentDivTwo.classList.remove("playerOpacity");
+    }
+    if (currentPlayer === 2) {
+      currentDivTwo.classList.add("playerOpacity");
+      currentDivOne.classList.remove("playerOpacity");
+    }
+  }
+};
+
+let currentPlayer = 1;
 let main = document.getElementsByTagName("main")[0];
 let previous = 0;
 const updatingGame = (event) => {
@@ -148,6 +170,7 @@ const updatingGame = (event) => {
       verifyTie();
       validateVictory();
     }
+    changeDiscClass();
     changePlayer();
     main.classList.toggle(`mainPlayer2`);
   }
@@ -185,6 +208,7 @@ const creatingBoard = () => {
   let popupDiv = document.createElement("div");
   popupDiv.className = "victoryPopup hidden";
   main.appendChild(popupDiv);
+  currentDivTwo.classList.add("playerOpacity");
 };
 
 creatingBoard();
