@@ -67,7 +67,7 @@ const rowCompare = () => {
 
 const transverseCompare = () => {
 
-  for(let i=2; i<game.length-2;i++){
+  for(let i=3; i<game.length-3;i++){
     let row = game[i]
     for(let j=0; j<row.length; j++){
       let cell = row[j]
